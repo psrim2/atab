@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>칭송</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/style_2.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+   
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+
+  <script>
+
+    //리포트 공통 스크립트 
+    $(function(){
+        //crew search list 개별 선택/해제
+        $(".crew_srch_popup .crew_srch_list > li").click(function(){
+            if($(this).hasClass("selected")){
+                $(this).removeClass("selected");
+            }else{
+                $(this).addClass("selected");
+            }
+        });
+
+        //crew search list 전체 선택/해제
+        $(".crew_srch_popup .crew_all_btn").click(function(){
+            if($("#crew_all").is(":checked")){
+                $(".crew_srch_popup .crew_srch_list > li").removeClass("selected");
+            }else{
+                $(".crew_srch_popup .crew_srch_list > li").addClass("selected");
+            }
+        });
+        
+        //리스트 삭제
+        $(".rpt_pax_list .del_list_btn").click(function(){
+            $(this).parent('li').remove();
+        });
+    });
+  </script>  
+  </head>
+  <body>
+    <section class="container white_bg" >   
+
+    <!-- header-->
+    <header class="rpt_header">
+        <a class="back_btn"></a>
+        <h2>칭송</h2>
+    </header>
+    <div class="sub_header rpt_flt_info">
+        <img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+        <span>OZ 1234</span>/
+        <span>A321-200</span>/
+        <span>HL8060</span>/
+        <span>ICN-KIX</span>
+    </div>
+
+    <!-- contents -->
+    <div class="contents" id="contents">
+
+        <!--  report -->
+        <div class="rpt_title"><span>해당클래스</span></div>
+        <div class="rpt_class_tab_box">
+            <input type="radio" name="praise_cls" id="f"   value="F"><label for="f"><span>F</span></label>
+            <input type="radio" name="praise_cls" id="y"   value="Y"><label for="y"><span>Y</span></label>
+            <input type="radio" name="praise_cls" id="cm"  value="CM"><label for="cm"><span>CM</span></label>
+            <input type="radio" name="praise_cls" id="all" value="ALL"><label for="all"><span>ALL</span></label>
+        </div>
+        <div class="rpt_title"><span>담당승무원</span></div>
+        <div class="rpt_pax_list_wrap">
+            <ul class="rpt_pax_list">
+                <!-- 리스트가 없을때 기본 리스트 -->
+                
+                <li class="default_crew" style="">
+						<img src="../../images/icon/icon_cabin.svg" alt="">
+						<p><input type="text" placeholder="담당승무원 이름 / 사번 / 소속그룹" readonly=""></p>
+					</li>
+                
+                <!-- 리스트 추가시 리스트. 칭송 리포트에서는 승무원리스트의 아이콘 대신 매니저 체크박스가 표시 -->
+                
+					<!-- 리스트 없을 때 -->
+					<li class="default_crew" style="display: none;">
+						<img src="../../images/icon/icon_cabin.svg" alt="">
+						<p><input type="text" placeholder="담당승무원 이름 / 사번 / 소속그룹" readonly=""></p>
+					</li>
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="254032" data-gisu="185" data-rank-name="선임승무원">오승민 / OH SEUNG MIN / 254032 / 2103</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="258327" data-gisu="196" data-rank-name="선임승무원">양스텔라 / YANG STELLA / 258327 / 1304</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="217875" data-gisu="103" data-rank-name="부사무장">신보나 / SHIN BONA / 217875 / 1210</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="258290" data-gisu="196" data-rank-name="선임승무원">손민경 / SON MINGYEONG / 258290 / 1105</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="153334" data-gisu="35" data-rank-name="사무장">김진아 / KIM JIN A / 153334 / 1208</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+				<li class="list ">
+					<input type="checkbox" id="" onclick="return false" class="praise_chk manager_chkbox"><label class="praise_chk_label" for="">승무원</label>
+					<p id="178716" data-gisu="59" data-rank-name="부사무장">권효진 / KWON HYO JIN / 178716 / 3220</p>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="crewDelete">
+				</li>
+			
+                
+            </ul>
+            <span class="add_btn popup_open" data-open="crew_srch_popup"><img src="../../images/common/btn_report_mem_add.svg" alt="" ></span>
+        </div>
+        <div class="rpt_title"><span>고객정보</span></div>
+        <div class="rpt_pax_list_wrap">
+            <ul class="rpt_pax_list">
+                <!-- 리스트가 없을때 기본 리스트 -->
+               	<li class="default_crew" style="">
+						<img src="../../images/icon/icon_cabin.svg" alt="">
+						<p><input type="text" placeholder="담당승무원 이름 / 사번 / 소속그룹" readonly=""></p>
+					</li>
+                <!-- 리스트 추가시 리스트-->
+                <!-- ★★★★ 고객정보 전화번호와 이메일 항목 추가됨. 추가된 두 항목은 필수 아님.-->
+                <li class="al_top list">
+					<img src="../../images/icon/icon_cumtomer.svg" alt="">
+					<div id="">
+						<p id="25874704">C** K***** / 798570764 / 061A</p>
+						<input type="text" placeholder="전화번호입력" class="phone"> 
+						<input type="text" placeholder="E-mail 주소 입력" class="email">
+					</div>
+					<img src="../../images/common/btn_list_del.svg" alt="" class="passengerDelete">
+				</li>
+
+            </ul>
+            <span class="add_btn popup_open" data-open="pax_srch_popup"><img src="../../images/common/btn_report_mem_add.svg" alt="" ></span>
+        </div>
+        <div class="rpt_title"><span>내용</span></div>
+       <ul class="rpt_select_list">
+			<li>
+				<!-- 접수경로 -->
+				<span class="required"><font style="color: #D73554;">*</font>접수경로</span>
+				<select id="receive_type" class="emptyChk">
+					<option value="">-- 선택 --</option>
+								<option value="N">인터넷</option>
+								<option value="P">전화</option>
+								<option value="Y">기내서신</option>
+				</select>
+			</li>
+			<li>
+				<!-- 칭송내용 -->
+				<span class="required"><font style="color: #D73554;">*</font>칭송내용</span>
+				<select id="praiseContents" class="emptyChk">
+					<option value="">-- 선택 --</option>
+								<option value="PRA01">미소와 친절</option>
+								<option value="PRA02">서비스감사</option>
+								<option value="PRA03">세심함</option>
+								<option value="PRA04">방송우수</option>
+								<option value="PRA05">특화서비스</option>
+				</select>
+			</li>
+			<li>
+				<!-- 특화비행 -->
+				<span class="required"><font style="color: #D73554;">*</font>특화비행</span>
+				<select id="specialFlt" class="emptyChk">
+					<option value="">-- 선택 --</option>
+								<option value="SPF01">선택사항없음</option>
+								<option value="SPF05">바리스타</option>
+								<option value="SPF06">사회공헌</option>
+								<option value="SPF07">소믈리에</option>
+								<option value="SPF08">쉐프</option>
+								<option value="SPF15">칵테일</option>
+								<option value="SPF16">스페셜 티</option>
+				</select>
+			</li>
+		</ul>
+    
+        <!-- delete ,save button-->
+        <div class="report_btn_box rpt_form" >
+            <p><img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE</p>
+            <p><img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE</p>
+        </div>
+        
+    </div>
+    <!-- //contents -->
+    </section>
+
+    <!-- 승객 검색 팝업( 모든 승객 리스트 표시, 검색시 검색결과표시 ) -->
+    <div class="pax_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">PASSENGER SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="pax_srch_popup">
+        </div>
+        <!-- 기본 -->
+        <div class="srch_box">
+            <input type="text" placeholder="SEARCH"><img src="../../images/icon/icon_search_thin.svg" alt="">
+        </div>
+        <!-- 검색 결과 표시 시 -->
+        <div class="srch_rst">
+            <p>"검색결과" 검색 결과 총 30건</p>
+        </div>
+        <ul class="pax_srch_list">
+            <li>
+                <span class="seat_no">44c</span><span class="nation">KOR</span>|<span class="name">HONG GIL DONG</span> 
+                <ul class="pax_info_wrap">
+                    <li><span>Cabin</span><p>Y</p></li>
+                    <li><span>Class</span><p>C</p></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--// 승객 검색 팝업 -->
+
+    <!-- 승무원 검색 팝업(모든 승무원 리스트 표시) -->
+    <div class="crew_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">CREW SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="crew_srch_popup">
+        </div>
+        <!-- 전체 승무원 선택/해제 -->
+        <div class="chk_all_box">
+            <input type="checkbox" id="crew_all" ><label for="crew_all" class="crew_all_btn"><img src="../../images/icon/icon_sel.svg" alt=""> 전체 승무원</label>
+        </div>
+        <ul class="crew_srch_list">
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="crew_confirm_btn">CONFIRM</div>
+    </div>
+    <!--// 승무원 검색 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed"  ></div>
+    <!-- //dimmed -->
+
+  </body>
+</html>

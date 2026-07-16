@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>칭송</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/style_2.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+   
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+
+  <script>
+
+    //리포트 공통 스크립트 
+    $(function(){
+        //crew search list 개별 선택/해제
+        $(".crew_srch_popup .crew_srch_list > li").click(function(){
+            if($(this).hasClass("selected")){
+                $(this).removeClass("selected");
+            }else{
+                $(this).addClass("selected");
+            }
+        });
+
+        //crew search list 전체 선택/해제
+        $(".crew_srch_popup .crew_all_btn").click(function(){
+            if($("#crew_all").is(":checked")){
+                $(".crew_srch_popup .crew_srch_list > li").removeClass("selected");
+            }else{
+                $(".crew_srch_popup .crew_srch_list > li").addClass("selected");
+            }
+        });
+        
+        //리스트 삭제
+        $(".rpt_pax_list .del_list_btn").click(function(){
+            $(this).parent('li').remove();
+        });
+    });
+  </script>  
+  </head>
+  <body>
+   <sec<section class="container white_bg">
+		<!-- header -->
+		<header class="rpt_header">
+			<a class="back_btn"></a>
+			<h2>기내식 취식률 조사</h2>
+		</header>
+		<!-- sub header -->
+		<div class="sub_header rpt_flt_info" style="top: 49px;">
+			<p class="fltInfo">
+				<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+				<span>OZ 202</span>
+				/
+				<span>HL7634</span>
+				/
+				<span>ICN - LAX</span>
+				<p>
+					<!--BS 0-->
+					BC 76
+					EY 362	
+				</p>
+			</p>
+			<script type="text/x-handlebars-template" id="survey-header-template">
+				<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+				<span>{{carr_cd}} {{flt_nbr}}</span>
+				/
+				<span>{{airc_reg}}</span>
+				/
+				<span>{{from_airp_cd}} - {{to_airp_cd}}</span>
+				<p>
+					<!--BS {{frst_bkd_pax_boarded}}-->
+					BC {{bus_bkd_pax_boarded}}
+					EY {{econ_bkd_pax_boarded}}	
+				</p>
+			</script>
+			<!-- tab -->
+			<div class="survey_tab tab_box">
+				<!-- <span class="tab" id="tab_bs" data-open="eat_bs_wrap" data-close="eat_rate_wrap">BS</span> -->
+				<span class="tab active" id="tab_bc" data-open="eat_bc_wrap" data-close="eat_rate_wrap">BS, BC</span>
+				<span class="tab" id="tab_ey" data-open="eat_ey_wrap" data-close="eat_rate_wrap">EY</span>
+			</div>
+		</div>
+		<!-- contents -->
+		<div class="contents" id="contents" style="padding-top: 149.859px;">
+			<!-- BS -->
+			<!-- BC -->
+			<div class="eat_bc_wrap eat_rate_wrap" style="display: block;">
+				<div class="rpt_title">
+					<span>1st 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>메뉴명</p>
+						<span>탑재수량</span>
+						<!-- <span>잔여수량</span> -->
+						<span>주문수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+									<p id="0" data-dishcd="ICNEN000093" data-menucd="ICOZND0498" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="OZ BC 앙뜨레 늑간살 부시드 그릴 쌈상 CSR" data-linecd="20" data-mealseq="1" data-restvol="9" data-fltdate="20240603" data-order_cd="KOR" data-order_desc="한식" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">한식</span><span class="dishdesc"> OZ BC 앙뜨레 늑간살 부시드 그릴 쌈상 CSR</span>
+									</p>
+									<input type="number" class="bc_payload_1" id="payload_0" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_1" id="remain_0" value="9"> -->
+									<input type="number" class="bc_orderCnt_1" id="orderCnt_0" value="1" readonly="readOnly">
+									<input type="number" class="bc_shortage_1" id="shortage_0" value="0" readonly="readOnly">
+									<p id="1" data-dishcd="ICNEN000178" data-menucd="ICOZND0498" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="OZ BC 앙뜨레 비프 텐더로인 크러쉬 포테이토 알루" data-linecd="20" data-mealseq="1" data-restvol="10" data-fltdate="20240603" data-order_cd="WBE" data-order_desc="쇠고기" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">쇠고기</span><span class="dishdesc"> OZ BC 앙뜨레 비프 텐더로인 크러쉬 포테이토 알루</span>
+									</p>
+									<input type="number" class="bc_payload_1" id="payload_1" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_1" id="remain_1" value="10"> -->
+									<input type="number" class="bc_orderCnt_1" id="orderCnt_1" value="0" readonly="readOnly">
+									<input type="number" class="bc_shortage_1" id="shortage_1" value="0" readonly="readOnly">
+									<p id="2" data-dishcd="ICNEN000289" data-menucd="ICOZND0498" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="고추장 닭갈비" data-linecd="20" data-mealseq="1" data-restvol="10" data-fltdate="20240603" data-order_cd="WCH" data-order_desc="닭고기" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">닭고기</span><span class="dishdesc"> 고추장 닭갈비</span>
+									</p>
+									<input type="number" class="bc_payload_1" id="payload_2" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_1" id="remain_2" value="10"> -->
+									<input type="number" class="bc_orderCnt_1" id="orderCnt_2" value="0" readonly="readOnly">
+									<input type="number" class="bc_shortage_1" id="shortage_2" value="0" readonly="readOnly">
+									<p id="3" data-dishcd="ICNEN000290" data-menucd="ICOZND0498" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="지중해식 해산물 구이" data-linecd="20" data-mealseq="1" data-restvol="9" data-fltdate="20240603" data-order_cd="WSE" data-order_desc="해산물" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">해산물</span><span class="dishdesc"> 지중해식 해산물 구이</span>
+									</p>
+									<input type="number" class="bc_payload_1" id="payload_3" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_1" id="remain_3" value="9"> -->
+									<input type="number" class="bc_orderCnt_1" id="orderCnt_3" value="1" readonly="readOnly">
+									<input type="number" class="bc_shortage_1" id="shortage_3" value="0" readonly="readOnly">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>소계</p>
+					<span class="bc_payload_1_ttl">40</span>
+					<!-- <span class="bc_remain_1_ttl">0</span> -->
+					<span class="bc_orderCnt_1_ttl">2</span>
+					<span class="bc_shortage_1_ttl">0</span>
+				</div>
+				<div class="rpt_title">
+					<span>2nd 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>메뉴명</p>
+						<span>탑재수량</span>
+						<!-- <span>잔여수량</span> -->
+						<span>주문수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+									<p id="4" data-dishcd="ICNEN000291" data-menucd="ICOZND0502" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="제주 녹차 와플" data-linecd="20" data-mealseq="2" data-restvol="0" data-fltdate="20240603" data-order_cd="WBT" data-order_desc="양식조식" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">양식조식</span><span class="dishdesc"> 제주 녹차 와플</span>
+									</p>
+									<input type="number" class="bc_payload_2" id="payload_4" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_2" id="remain_4" value="0"> -->
+									<input type="number" class="bc_orderCnt_2" id="orderCnt_4" value="0" readonly="readOnly">
+									<input type="number" class="bc_shortage_2" id="shortage_4" value="0" readonly="readOnly">
+									<p id="5" data-dishcd="ICNEN000292" data-menucd="ICOZND0502" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="이탈리아식 토마토 프리타타" data-linecd="20" data-mealseq="2" data-restvol="0" data-fltdate="20240603" data-order_cd="WEG" data-order_desc="계란요리" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">계란요리</span><span class="dishdesc"> 이탈리아식 토마토 프리타타</span>
+									</p>
+									<input type="number" class="bc_payload_2" id="payload_5" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_2" id="remain_5" value="0"> -->
+									<input type="number" class="bc_orderCnt_2" id="orderCnt_5" value="0" readonly="readOnly">
+									<input type="number" class="bc_shortage_2" id="shortage_5" value="0" readonly="readOnly">
+									<p id="6" data-dishcd="ICNEN000293" data-menucd="ICOZND0502" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="10" data-fullnmyn="" data-dishdesc="녹두 닭죽" data-linecd="20" data-mealseq="2" data-restvol="0" data-fltdate="20240603" data-order_cd="WPR" data-order_desc="죽" data-choicelack="0" data-cls="BC" data-zone="A" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">
+												<span class="codedesc">죽</span><span class="dishdesc"> 녹두 닭죽</span>
+									</p>
+									<input type="number" class="bc_payload_2" id="payload_6" value="10" readonly="readOnly">
+									<!-- <input type="number" class="bc_remain_2" id="remain_6" value="0"> -->
+									<input type="number" class="bc_orderCnt_2" id="orderCnt_6" value="0" readonly="readOnly">
+									<input type="number" class="bc_shortage_2" id="shortage_6" value="0" readonly="readOnly">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>소계</p>
+					<span class="bc_payload_2_ttl">30</span>
+					<!-- <span class="bc_remain_2_ttl">0</span> -->
+					<span class="bc_orderCnt_2_ttl">0</span>
+					<span class="bc_shortage_2_ttl">0</span>
+				</div>
+				<!--
+				<div class="rpt_title">
+					<span>3rd 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>메뉴명</p>
+						<span>탑재수량</span>
+						<span>잔여수량</span>
+						<span>주문수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>소계</p>
+					<span class="bc_payload_3_ttl">0</span>
+					<span class="bc_remain_3_ttl">0</span>
+					<span class="bc_shortage_3_ttl">0</span>
+				</div>
+				-->
+			</div>
+			<!-- EY-->
+			<!-- BS -->
+			<!-- BC -->
+			<!-- EY-->
+			<div class="eat_ey_wrap eat_rate_wrap" style="display: none;">
+				<div class="rpt_title">
+					<span>1st 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title">
+						<p>메뉴명</p>
+						<!-- <span>탑재수량</span> -->
+						<span>잔여수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li>
+									<p id="0" data-dishcd="ICNEN000264" data-menucd="ICOZNJ0344" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="0" data-fullnmyn="" data-dishdesc="레몬 간장 치킨과 볶음밥" data-linecd="20" data-mealseq="1" data-restvol="0" data-fltdate="20240603" data-order_cd="WCH" data-order_desc="닭고기" data-choicelack="0" data-cls="EY" data-zone="" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">레몬 간장 치킨과 볶음밥</p>									
+									<!-- <input type="number" class="ey_payload_1" id="payload_0" value="0"> -->
+									<input type="number" class="ey_remain_1" id="remain_0" value="0" readonly="readOnly">
+									<input type="number" class="ey_shortage_1" id="shortage_0" value="0" readonly="readOnly">
+									<p id="1" data-dishcd="ICNENBE0234" data-menucd="ICOZNJ0344" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="0" data-fullnmyn="" data-dishdesc="OZ EY 앙뜨레 한식 소 불고기 쌈밥 TIN-FOIL" data-linecd="20" data-mealseq="1" data-restvol="0" data-fltdate="20240603" data-order_cd="KOR" data-order_desc="한식" data-choicelack="0" data-cls="EY" data-zone="" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">OZ EY 앙뜨레 한식 소 불고기 쌈밥 TIN-FOIL</p>									
+									<!-- <input type="number" class="ey_payload_1" id="payload_1" value="0"> -->
+									<input type="number" class="ey_remain_1" id="remain_1" value="0" readonly="readOnly">
+									<input type="number" class="ey_shortage_1" id="shortage_1" value="0" readonly="readOnly">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>소계</p>
+					<!-- <span class="ey_payload_1_ttl">0</span> -->
+					<span class="ey_remain_1_ttl">0</span>
+					<span class="ey_shortage_1_ttl">0</span>
+				</div>
+				<div class="rpt_title">
+					<span>2nd 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title">
+						<p>메뉴명</p>
+						<!-- <span>탑재수량</span> -->
+						<span>잔여수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li>
+									<p id="2" data-dishcd="ICNEN000276" data-menucd="ICOZNJ0350" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="0" data-fullnmyn="" data-dishdesc="한우 보리죽" data-linecd="20" data-mealseq="2" data-restvol="0" data-fltdate="20240603" data-order_cd="WPR" data-order_desc="죽" data-choicelack="0" data-cls="EY" data-zone="" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">한우 보리죽</p>
+									<!-- <input type="number" class="ey_payload_2" id="payload_2" value="0"> -->
+									<input type="number" class="ey_remain_2" id="remain_2" value="0" readonly="readOnly">
+									<input type="number" class="ey_shortage_2" id="shortage_2" value="0" readonly="readOnly">
+									<p id="3" data-dishcd="ICNEN000281" data-menucd="ICOZNJ0350" data-menuname="" data-created_dt="2024-06-04 01:23:42" data-dstn="ICN" data-roadvol="0" data-fullnmyn="" data-dishdesc="크로켓 포테이토와 스크램블 에그" data-linecd="20" data-mealseq="2" data-restvol="0" data-fltdate="20240603" data-order_cd="WEG" data-order_desc="계란요리" data-choicelack="0" data-cls="EY" data-zone="" data-fltno="202" data-upsert_date="2024-06-04 01:23:42" data-upsert_id="kimhj6" data-upsert_empno="521771" data-user_name="김형진">크로켓 포테이토와 스크램블 에그</p>
+									<!-- <input type="number" class="ey_payload_2" id="payload_3" value="0"> -->
+									<input type="number" class="ey_remain_2" id="remain_3" value="0" readonly="readOnly">
+									<input type="number" class="ey_shortage_2" id="shortage_3" value="0" readonly="readOnly">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>소계</p>
+					<!-- <span class="ey_payload_2_ttl">0</span> -->
+					<span class="ey_remain_2_ttl">0</span>
+					<span class="ey_shortage_2_ttl">0</span>
+				</div>
+				<!--
+				<div class="rpt_title">
+					<span>3rd 메뉴</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>메뉴명</p>
+						<span>탑재수량</span>
+						<span>잔여수량</span>
+						<span>선택부족</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>소계</p>
+					<span class="ey_payload_3_ttl">0</span>
+					<span class="ey_remain_3_ttl">0</span>
+					<span class="ey_shortage_3_ttl">0</span>
+				</div>
+				-->
+			</div>
+			<div class="dv_line"></div>
+			<!-- save button-->
+			<div class="survey_btn disable">
+				<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+			</div>
+		</div>
+		<script type="text/x-handlebars-template" id="meal-rate-template">
+			{{#mealInfo}}
+			<!-- BS -->
+			{{#hbfn_if cls 'BS'}}
+			<div class="eat_bs_wrap eat_rate_wrap">
+				<div class="rpt_title">
+					<span>1st {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<!-- <span>{{@root.resource.survey_contents.title_restVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 1}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bs_payload_1" id="payload_{{@index}}" value="{{roadvol}}">
+									<!-- <input type="number" class="bs_remain_1" id="remain_{{@index}}" value="{{restvol}}"> -->
+									<input type="number" class="bs_orderCnt_1" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bs_shortage_1" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bs_payload_1_ttl">0</span>
+					<!-- <span class="bs_remain_1_ttl">0</span> -->
+					<span class="bs_orderCnt_1_ttl">0</span>
+					<span class="bs_shortage_1_ttl">0</span>
+				</div>
+				<div class="rpt_title">
+					<span>2nd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<!-- <span>{{@root.resource.survey_contents.title_restVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 2}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bs_payload_2" id="payload_{{@index}}" value="{{roadvol}}">
+									<!-- <input type="number" class="bs_remain_2" id="remain_{{@index}}" value="{{restvol}}"> -->
+									<input type="number" class="bs_orderCnt_2" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bs_shortage_2" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bs_payload_2_ttl">0</span>
+					<!-- <span class="bs_remain_2_ttl">0</span> -->
+					<span class="bs_orderCnt_2_ttl">0</span>
+					<span class="bs_shortage_2_ttl">0</span>
+				</div>
+				<!--
+				<div class="rpt_title">
+					<span>3rd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<span>{{@root.resource.survey_contents.title_restVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 3}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bs_payload_3" id="payload_{{@index}}" value="{{roadvol}}">
+									<input type="number" class="bs_remain_3" id="remain_{{@index}}" value="{{restvol}}">
+									<input type="number" class="bs_orderCnt_3" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bs_shortage_3" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bs_payload_3_ttl">0</span>
+					<span class="bs_remain_3_ttl">0</span>
+					<span class="bs_shortage_3_ttl">0</span>
+				</div>
+				-->
+			</div>
+			{{/hbfn_if}}
+			<!-- BC -->
+			{{#hbfn_if cls 'BC'}}
+			<div class="eat_bc_wrap eat_rate_wrap" style="display: block;">
+				<div class="rpt_title">
+					<span>1st {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<!-- <span>{{@root.resource.survey_contents.title_restVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 1}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bc_payload_1" id="payload_{{@index}}" value="{{roadvol}}">
+									<!-- <input type="number" class="bc_remain_1" id="remain_{{@index}}" value="{{restvol}}"> -->
+									<input type="number" class="bc_orderCnt_1" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bc_shortage_1" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bc_payload_1_ttl">0</span>
+					<!-- <span class="bc_remain_1_ttl">0</span> -->
+					<span class="bc_orderCnt_1_ttl">0</span>
+					<span class="bc_shortage_1_ttl">0</span>
+				</div>
+				<div class="rpt_title">
+					<span>2nd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<!-- <span>{{@root.resource.survey_contents.title_restVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 2}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bc_payload_2" id="payload_{{@index}}" value="{{roadvol}}">
+									<!-- <input type="number" class="bc_remain_2" id="remain_{{@index}}" value="{{restvol}}"> -->
+									<input type="number" class="bc_orderCnt_2" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bc_shortage_2" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bc_payload_2_ttl">0</span>
+					<!-- <span class="bc_remain_2_ttl">0</span> -->
+					<span class="bc_orderCnt_2_ttl">0</span>
+					<span class="bc_shortage_2_ttl">0</span>
+				</div>
+				<!--
+				<div class="rpt_title">
+					<span>3rd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<span>{{@root.resource.survey_contents.title_restVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 3}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>
+										{{#if (or (eq cls 'BS') (eq cls 'BC') ) }}
+											{{#hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">{{order_desc}}</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+											{{^hbfn_isNotEmpty order_cd}}
+												<span class="codedesc">empty code</span><span class="dishdesc"> {{dishdesc}}</span>
+											{{/hbfn_isNotEmpty}}
+										{{/if}}
+										{{#if (or (eq cls 'EY') ) }}
+											{{dishdesc}}
+										{{/if}}
+									</p>
+									<input type="number" class="bc_payload_3" id="payload_{{@index}}" value="{{roadvol}}">
+									<input type="number" class="bc_remain_3" id="remain_{{@index}}" value="{{restvol}}">
+									<input type="number" class="bc_orderCnt_3" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="bc_shortage_3" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap col3">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="bc_payload_3_ttl">0</span>
+					<span class="bc_remain_3_ttl">0</span>
+					<span class="bc_shortage_3_ttl">0</span>
+				</div>
+				-->
+			</div>
+			{{/hbfn_if}}
+			<!-- EY-->
+			{{#hbfn_if cls 'EY'}}
+			<div class="eat_ey_wrap eat_rate_wrap">
+				<div class="rpt_title">
+					<span>1st {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<!-- <span>{{@root.resource.survey_contents.title_roadVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_restVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li>
+							{{#list}}
+								{{#hbfn_if mealseq 1}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>{{dishdesc}}</p>									
+									<!-- <input type="number" class="ey_payload_1" id="payload_{{@index}}" value="{{roadvol}}"> -->
+									<input type="number" class="ey_remain_1" id="remain_{{@index}}" value="{{restvol}}">
+									<input type="number" class="ey_shortage_1" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<!-- <span class="ey_payload_1_ttl">0</span> -->
+					<span class="ey_remain_1_ttl">0</span>
+					<span class="ey_shortage_1_ttl">0</span>
+				</div>
+				<div class="rpt_title">
+					<span>2nd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<!-- <span>{{@root.resource.survey_contents.title_roadVol}}</span> -->
+						<span>{{@root.resource.survey_contents.title_restVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li>
+							{{#list}}
+								{{#hbfn_if mealseq 2}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>{{dishdesc}}</p>
+									<!-- <input type="number" class="ey_payload_2" id="payload_{{@index}}" value="{{roadvol}}"> -->
+									<input type="number" class="ey_remain_2" id="remain_{{@index}}" value="{{restvol}}">
+									<input type="number" class="ey_shortage_2" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<!-- <span class="ey_payload_2_ttl">0</span> -->
+					<span class="ey_remain_2_ttl">0</span>
+					<span class="ey_shortage_2_ttl">0</span>
+				</div>
+				<!--
+				<div class="rpt_title">
+					<span>3rd {{@root.resource.survey_contents.title_menu}}</span>
+				</div>
+				<div class="eat_list_wrap">
+					<div class="eat_list_title col3">
+						<p>{{@root.resource.survey_contents.title_menuDesc}}</p>
+						<span>{{@root.resource.survey_contents.title_roadVol}}</span>
+						<span>{{@root.resource.survey_contents.title_restVol}}</span>
+						<span>{{@root.resource.survey_contents.title_choiceLack}}</span>
+					</div>
+					<ul class="eat_list">
+						<li class="col3">
+							{{#list}}
+								{{#hbfn_if mealseq 3}}
+									<p id="{{@index}}" 
+										data-dishcd="{{dishcd}}" data-menucd="{{menucd}}" data-menuname="{{menuname}}" data-created_dt="{{created_dt}}" data-dstn="{{dstn}}" data-roadvol="{{roadvol}}"
+									 	data-fullnmyn="{{fullnmyn}}" data-dishdesc="{{dishdesc}}" data-linecd="{{linecd}}" data-mealseq="{{mealseq}}" data-restvol="{{restvol}}" data-fltdate="{{fltdate}}" data-order_cd="{{order_cd}}" data-order_desc="{{order_desc}}"
+									 	data-choicelack="{{choicelack}}" data-cls="{{cls}}" data-zone="{{zone}}" data-fltno="{{fltno}}" data-upsert_date="{{upsert_date}}" data-upsert_id="{{upsert_id}}" data-upsert_empno="{{upsert_empno}}" data-user_name="{{user_name}}"
+									>{{dishdesc}}</p>
+									<input type="number" class="ey_payload_3" id="payload_{{@index}}" value="{{roadvol}}">
+									<input type="number" class="ey_remain_3" id="remain_{{@index}}" value="{{restvol}}">
+									<input type="number" class="ey_orderCnt_3" id="orderCnt_{{@index}}" value="{{choicevol}}">
+									<input type="number" class="ey_shortage_3" id="shortage_{{@index}}" value="{{choicelack}}">
+								{{/hbfn_if}}
+							{{/list}}
+						</li>
+					</ul>
+				</div>
+				<div class="total_wrap">
+					<p>{{@root.resource.survey_contents.title_total}}</p>
+					<span class="ey_payload_3_ttl">0</span>
+					<span class="ey_remain_3_ttl">0</span>
+					<span class="ey_shortage_3_ttl">0</span>
+				</div>
+				-->
+			</div>
+			{{/hbfn_if}}
+			{{/mealInfo}}
+			<div class="dv_line"></div>
+			<!-- save button-->
+			<div class="survey_btn">
+				<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+			</div>
+		</script>
+	<div class="pinConfirmPop"></div><div id="commonPop"></div></section>
+
+    <!-- 승객 검색 팝업( 모든 승객 리스트 표시, 검색시 검색결과표시 ) -->
+    <div class="pax_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">PASSENGER SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="pax_srch_popup">
+        </div>
+        <!-- 기본 -->
+        <div class="srch_box">
+            <input type="text" placeholder="SEARCH"><img src="../../images/icon/icon_search_thin.svg" alt="">
+        </div>
+        <!-- 검색 결과 표시 시 -->
+        <div class="srch_rst">
+            <p>"검색결과" 검색 결과 총 30건</p>
+        </div>
+        <ul class="pax_srch_list">
+            <li>
+                <span class="seat_no">44c</span><span class="nation">KOR</span>|<span class="name">HONG GIL DONG</span> 
+                <ul class="pax_info_wrap">
+                    <li><span>Cabin</span><p>Y</p></li>
+                    <li><span>Class</span><p>C</p></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--// 승객 검색 팝업 -->
+
+    <!-- 승무원 검색 팝업(모든 승무원 리스트 표시) -->
+    <div class="crew_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">CREW SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="crew_srch_popup">
+        </div>
+        <!-- 전체 승무원 선택/해제 -->
+        <div class="chk_all_box">
+            <input type="checkbox" id="crew_all" ><label for="crew_all" class="crew_all_btn"><img src="../../images/icon/icon_sel.svg" alt=""> 전체 승무원</label>
+        </div>
+        <ul class="crew_srch_list">
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="crew_confirm_btn">CONFIRM</div>
+    </div>
+    <!--// 승무원 검색 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed"  ></div>
+    <!-- //dimmed -->
+
+  </body>
+</html>

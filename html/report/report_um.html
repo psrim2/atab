@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>UM Letter</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/style_2.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <link href="../../css/add_2024.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+
+    <script>
+            $(document).ready(function() {  
+
+                // text area 입력 시, 자동 세로 확장
+                $("textarea").on('keydown keyup', function () {
+                    $(this).height(1).height( $(this).prop('scrollHeight')-30 );	
+                    });
+
+                // 1. + 버튼(add_btn) 클릭 시
+                $(document).on('click', '.add_btn', function() {
+                    var $li = $(this).closest('li');
+                    
+                    // + 버튼은 공간을 유지한 채 투명화
+                    $(this).addClass('invisible'); 
+                    
+                    // free_txt에 block 클래스 추가해서 보여주기
+                    $li.find('.rpt_kind.free_txt').addClass('block');
+                });
+
+                // 2. 삭제 버튼(del_btn) 클릭 시
+                $(document).on('click', '.del_btn', function() {
+                    var $li = $(this).closest('li');
+                    
+                    // free_txt 입력값 초기화 (선택사항)
+                    $li.find('.rpt_kind.free_txt .basic_input').val('');
+                    
+                    // free_txt에서 block 클래스 제거해서 숨기기
+                    $li.find('.rpt_kind.free_txt').removeClass('block');
+                    
+                    // 해당 행의 + 버튼 다시 나타내기
+                    $li.find('.add_btn').removeClass('invisible');
+                });
+
+                // 4. 미리보기 슬라이드 팝업 열기/닫기
+                $(".btn_preview").click(function(){
+                    $(".slidePopWrap").removeClass("off")
+                });
+                $(".x_btn").click(function(){
+                    $(".slidePopWrap").addClass("off")
+                });
+                
+            });
+
+             
+	</script>
+   
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+  </head>
+  <body>
+    <section class="container white_bg" >   
+
+      <!-- header-->
+      <header class="rpt_header">
+          <a class="back_btn"></a>
+          <h2>PURS REPORT</h2>
+      </header>
+      <div class="sub_header rpt_flt_info">
+          <img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+          <span>05 Nov 24</span>/
+          <span>OZ 1234</span>/
+          <span>ICN-KIX</span>/
+          <span>028A</span>
+      </div>
+
+      <!-- contents -->
+      <div class="contents rpt_umletter" id="contents">
+
+          <!--  report -->
+        
+            <!-- name -->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>UM 승객 (UM Name)</span>
+            </div>
+            <div class="rpt_con_wrap col">
+                <input type="text" placeholder="">
+                <p class="sub_txt">한글 이름 작성 필요한 경우 수정해 주세요. <br>Please change  UM name to Korean  if necessary.</p>
+            </div>
+            <!-- name -->
+          
+            <!-- 아이표정-->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>탑승시, 우리아이 표정 (While Boarding)</span>
+            </div>
+            <div class="rpt_con_wrap">
+                <textarea class="autosize" placeholder="탑승시 어린이의 표정 및 특이사항 등을 기입해 주세요." style="min-height: 80px;"></textarea>
+            </div>
+            <!-- 아이표정-->
+
+            <!-- 식사및 음료 -->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>식사 및 음료 (Meal & Beverage)</span>
+            </div>
+            <ul class="rpt_con_wrap col">
+                <li class="meal_wrap">
+                    <p class="no">1st</p>
+                    <div>
+                        <div class="rpt_kind">
+                            <select id="ctg_large" class="emptyChk">
+                                <option value="">-- 선택 --</option>
+                                    <option value="PU01">캐빈승무원 안내</option>
+                                    <option value="PU02">기내 안전활동</option>
+                            </select> 
+                            <select id="ctg_small" class="emptyChk">
+                                <option value="">-- 선택 --</option>
+                            </select>
+                            <span class="btn_line_gray icon_btn add_btn"><img src="../../images/icon/icon_write.svg" alt="" ></span>
+                        </div>
+                        <div class="rpt_kind free_txt">
+                            <input class="basic_input" type="text" placeholder="내용을 입력해 주세요.">
+                            <span class="btn_line_gray icon_btn del_btn"><img src="../../images/icon/icon_del.svg" alt=""></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="meal_wrap">
+                    <p class="no">2nd</p>
+                    <div>
+                        <div class="rpt_kind">
+                            <select id="ctg_large" class="emptyChk">
+                                <option value="">-- 선택 --</option>
+                                    <option value="PU01">캐빈승무원 안내</option>
+                                    <option value="PU02">기내 안전활동</option>
+                            </select> 
+                            <select id="ctg_small" class="emptyChk">
+                                <option value="">-- 선택 --</option>
+                            </select>
+                            <span class="btn_line_gray icon_btn add_btn"><img src="../../images/icon/icon_write.svg" alt="" ></span>
+                        </div>
+                        <div class="rpt_kind free_txt">
+                            <input class="basic_input" type="text" placeholder="내용을 입력해 주세요.">
+                            <span class="btn_line_gray icon_btn del_btn"><img src="../../images/icon/icon_del.svg" alt=""></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- 식사및 음료 -->
+
+            <!-- 휴게시간 (Rest Time)-->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>휴게시간 (Rest Time)</span>
+            </div>
+            <div class="rpt_con_wrap">
+                <textarea class="autosize" placeholder="기내에서 본 영화, 수면시간 등을 기입해 주세요." style="min-height: 80px;"></textarea>
+            </div>
+            <!-- 휴게시간 (Rest Time)-->
+
+            <!-- 인사말 (Greeting)-->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>인사말 (Greeting)</span>
+            </div>
+            <div class="rpt_con_wrap">
+                <textarea class="autosize" placeholder="담당 승무원의 인사말을 작성해 주세요." style="min-height: 80px;"></textarea>
+            </div>
+            <!-- 인사말 (Greeting)-->
+
+            <!-- 담당 승무원 (Crew Name) -->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>담당 승무원 (Crew Name)</span>
+            </div>
+            <div class="rpt_con_wrap col">
+                <input type="text" placeholder="">
+                <p class="sub_txt">영문 이름 작성이 필요한 경우 수정해 주세요.<br>Please change your name to English if necessary.</p>
+            </div>
+            <!-- 담당 승무원 (Crew Name) -->
+            
+
+            <!-- 테마 선택 (Select Theme) -->
+            <div class="rpt_title">
+                <span class="required"><font style="color: #D73554;">*</font>테마 선택 (Select Theme)</span>
+            </div>
+            <div class="rpt_con_wrap rpt_view_radio">
+                <div class="radio_wrap">
+                    <input type="radio" name="umletter" value="letter01" id="letter01">
+                    <label class="radio" for="letter01">
+                        <img src="../../images/common/img_thumb_um01.png" alt="" >
+                        <div class="btn_preview"><img src="../../images/icon/icon_preview.svg" alt="" >preview</div>
+                    </label>
+                </div>
+                 <div class="radio_wrap">
+                    <input type="radio" name="umletter" value="letter02" id="letter02">
+                    <label class="radio" for="letter02">
+                        <img src="../../images/common/img_thumb_um02.png" alt="" >
+                       <div class="btn_preview"><img src="../../images/icon/icon_preview.svg" alt="" >preview</div>
+                    </label>
+                </div>
+            </div>
+            <!-- 테마 선택 (Select Theme) -->
+         
+        
+            <!-- delete ,save button-->
+            <div class="report_btn_box rpt_form">
+                <p><img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE</p>
+                <p><img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE</p>
+            </div>
+            
+      </div>
+       <!-- //contents -->
+    </section>
+
+
+
+    
+        <!-- umletter 미리보기 슬라이드 팝업 -->
+		<div class="slidePopWrap umletterviewPop off">
+			<div class="titlePopBox imgConView">
+				<div class="head">
+					<h1>UM Letter Preview</h1>
+					<span class="x_btn" onclick="closeDetailPop()"></span>
+				</div>
+				<div class="popConWrap">
+
+					<iframe id="myFrame" src="letter/umletter_1.html" width="100%" frameborder="0" scrolling="no"></iframe>
+
+            <script>
+                const iframe = document.getElementById('myFrame');
+
+                    iframe.addEventListener('load', function() {
+                      try {
+                        // 1. 자식 창의 window와 document 객체에 접근
+                        const iframeWindow = iframe.contentWindow;
+                        const iframeDoc = iframeWindow.document;
+
+                        // 2. 내부 콘텐츠가 정렬(float 등)로 인해 높이가 깨지는 것을 방지하기 위해 
+                        // 자식 문서 body의 스타일을 임시로 셋팅합니다.
+                        iframeDoc.body.style.overflow = 'hidden';
+                        iframeDoc.body.style.height = 'auto';
+
+                        // 3. 자식 문서 안의 모든 자식 요소들 중 가장 아래에 있는 녀석의 위치를 찾습니다.
+                        const children = iframeDoc.body.children;
+                        let maxBottom = 0;
+
+                        for (let i = 0; i < children.length; i++) {
+                          const rect = children[i].getBoundingClientRect();
+                          // 각 요소의 top 위치 + 해당 요소의 실제 높이 = 바닥면 위치
+                          const bottom = rect.top + iframeWindow.pageYOffset + rect.height;
+                          if (bottom > maxBottom) {
+                            maxBottom = bottom;
+                          }
+                        }
+
+                        // 4. 여백(Padding/Margin)을 고려해 가장 아래쪽 위치를 최종 높이로 설정
+                        // 만약 계산된 높이가 너무 작으면 scrollHeight를 대안으로 씁니다.
+                        const finalHeight = maxBottom > 0 ? maxBottom : iframeDoc.documentElement.scrollHeight;
+
+                        // 5. 하단이 딱 잘리는 것을 막기 위해 약간의 버퍼(예: 20px)를 더해줍니다.
+                        iframe.style.height = (finalHeight + 20) + 'px';
+
+                      } catch (e) {
+                        console.error("높이 계산 중 오류 발생:", e);
+                      }
+                  });
+              </script>
+          
+				</div>
+			</div>
+			<div class="popBg"></div>
+		</div>
+		
+		<!-- umletter 미리보기 슬라이드 팝업 -->
+
+  </body>
+</html>
