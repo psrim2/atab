@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>REPORT</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <link href="../../css/add_2024.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+ 
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+    <script>
+
+      $(function(){
+
+        $(".rpt_view_btn").click(function(){
+          $(".slidePopWrap").removeClass("off")
+        });
+        $(".x_btn").click(function(){
+          $(".slidePopWrap").addClass("off")
+        });
+
+      })
+
+    </script>
+  </head>
+  <body>
+    <section class="container white_bg" >
+
+      <!-- side menu -->
+      <div class='main_menu' id='main_menu'></div>
+      <!-- //side menu -->
+
+      <!-- schedule side menu -->
+      <div class="sch_menu_btn" id="sch_menu_btn"  style="display: block;">
+        <ul>
+          <li><a></a></li>
+          <li><img src="../../images/icon/icon_g_briefing.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_station.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_exchange.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_plane.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_service.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_vip.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_pax.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_sel_report.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_survey.svg" alt=""></li>
+        </ul>
+        <ul class="f_btn">
+          <li><img src="../../images/icon/icon_g_manual.svg" alt=""></li>
+          <li><img src="../../images/icon/icon_g_memo.svg" alt=""></li>
+        </ul>
+      </div>
+      <div class='sch_menu' id='sch_menu'></div>
+      <!-- //schedule side menu -->
+
+      <!-- header-->
+      <header class="main_header sch"></header>
+   
+      <!-- schedule_popup-->
+      <div class="skd_popup"></div>
+
+      <!-- contents -->
+      <div class="contents sch_content" id="contents">
+          <h2 class="sch_title">REPORT</h2>
+          
+          <!-- 리포트 추가 버튼(팝업 열기) -->
+          <span class="rpt_add_btn popup_open" data-open="report_add_popup"><img src="../../images/common/btn_report_add.svg" alt="add_button"></span>
+
+          <!-- 리포트 영역 -->
+          <div class="report_wrap">
+              <!-- 작성된 리포트가 없을 때 -->
+              <div class="no_report" style="display: none;" >
+                  <div>
+                      <img src="../../images/common/img_report.svg" alt="">
+                      <p>등록된 REPORT가 없습니다. </p>
+                      <p>[+] 버튼을 눌러 REPORT를 작성하세요. </p>
+                  </div>
+              </div>
+              <!-- 리포트 리스트 있을 때-->
+              <ul class="report_list" style="display:block;">
+                  <li>
+                      <span class="chkbox"><input type="checkbox" id="chk_1"><label for="chk_1"></label></span>
+                      <div>
+                          <span class="kind">PURS REPORT</span>
+                          <p>좌석배정 불만 보고</p>
+                      </div>
+                      <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
+                  </li>
+                  <li>
+                      <span class="chkbox"><input type="checkbox" id="chk_2"><label for="chk_2"></label></span>
+                      <div>
+                          <span class="kind">고객불만 보고서</span>
+                          <p>OZ721(ICN/HAN)편 B/C Entree Counting 실수로 인한 손님 불만보고</p>
+                      </div>
+                      <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
+                  </li>
+                  <li>
+                      <span class="chkbox"><input type="checkbox" id="chk_3" disabled><label for="chk_3"></label></span>
+                      <div>
+                          <span class="kind">POTABLE WATER<span>*DEP/ARR 모두 입력 시 전송 가능</span></span>
+                          <p><span>DEP 90%</span>/<span>ARR 30%</span>/<span>USAGE 60%</span></p>
+                      </div>
+                      <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
+                  </li>
+                  <li>
+                      <span class="chkbox"><input type="checkbox" id="chk_3"><label for="chk_3"></label></span>
+                      <div>
+                          <span class="kind">UM LETTER</span>
+                          <p>JEONG HANA</p>
+                      </div>
+                      <img src="../../images/common/btn_view.svg" alt="" class="rpt_view_btn">
+                      <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
+                  </li>
+              </ul>
+          </div>
+
+          <!-- 리포트가 없을때는 비활성, 있으면 활성(disable 클래스 제거. 버튼 이벤트 바인드.) -->
+          <div class="report_btn_box disable">
+              <p><img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE</p>
+              <p><img src="../../images/icon/icon_send.svg" alt="icon_send"> SEND</p>
+          </div>
+          
+      </div>
+       <!-- //contents -->
+    </section>
+
+    <!-- 상세 팝업 -->
+    <div class="report_add_popup" style="display: block;">
+      <div class="head">
+          <span class="title">REPORT</span>
+          <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="report_add_popup">
+      </div>
+      <ul class="report_add_list">
+        <li data-link="PURS">
+            <img src="../../images/icon/icon_report_purs.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">PURS Report</div>
+              <div class="description">
+                  특이 사항, 부적합 사항, 경미한 환자 보고
+              </div>
+            </div>
+        </li>
+          <li data-link="COMPLAINT">
+            <img src="../../images/icon/icon_report_cs.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">고객불만 보고서</div>
+              <div class="description">
+                  회신요청 고객불만
+              </div>
+            </div>
+        </li>
+          <li data-link="EVC">
+            <img src="../../images/icon/icon_report_voucher.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">E-VOUCHER Report</div>
+              <div class="description">
+                  E-Voucher 발급 시
+              </div>
+            </div>
+        </li>
+          <li data-link="IRR">
+            <img src="../../images/icon/icon_report_irr.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">FLT IRR 상황발생 결과 보고서</div>
+              <div class="description">
+                  비정상 운항, 의료인 도움, 유료좌석 사용, 정비 IRR 관련
+              </div>
+            </div>
+        </li>
+        <li data-link="CABIN">
+            <img src="../../images/icon/icon_report_cabin.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">CABIN Report</div>
+              <div class="description">
+                  안전, 서비스 등 업무 절차 개선 제안
+              </div>
+            </div>
+        </li>
+        <li data-link="Portable Water">
+            <img src="../../images/icon/icon_report_water.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">Potable Water</div>
+              <div class="description">
+                  기내 음용수 사용량 측정
+              </div>
+            </div>
+        </li>
+        <li data-link="UM">
+            <img src="../../images/icon/icon_report_um.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">UM Letter</div>
+              <div class="description">
+                  UM 대상 편지
+              </div>
+            </div>
+        </li>
+
+          <li data-link="SAFETY">
+            <img src="../../images/icon/icon_report_safety.svg" alt="icon">
+            <div class="txtWrap">
+              <div class="title">안전보고서</div>
+              <div class="description">
+                  사고/준사고/항공안전장애/회사 의무보고/항공보안법 위반/Hazard Report<div style="color:#ff0000; font-size: 12px; font-weight: bold;">※AMRS 앱에서 작성</div>
+              </div>
+            </div>
+        </li>
+    </ul>
+</div>
+    <!--// 상세 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed" ></div>
+    <!-- //dimmed -->
+
+
+    <!-- umletter 미리보기 슬라이드 팝업 -->
+		<div class="slidePopWrap umletterviewPop off">
+			<div class="titlePopBox imgConView">
+				<div class="head">
+					<h1>UM Letter Preview</h1>
+					<span class="x_btn" onclick="closeDetailPop()"></span>
+				</div>
+				<div class="popConWrap">
+
+					<iframe id="myFrame" src="letter/umletter_1.html" width="100%" frameborder="0" scrolling="no"></iframe>
+
+            <script>
+                const iframe = document.getElementById('myFrame');
+
+                    iframe.addEventListener('load', function() {
+                      try {
+                        // 1. 자식 창의 window와 document 객체에 접근
+                        const iframeWindow = iframe.contentWindow;
+                        const iframeDoc = iframeWindow.document;
+
+                        // 2. 내부 콘텐츠가 정렬(float 등)로 인해 높이가 깨지는 것을 방지하기 위해 
+                        // 자식 문서 body의 스타일을 임시로 셋팅합니다.
+                        iframeDoc.body.style.overflow = 'hidden';
+                        iframeDoc.body.style.height = 'auto';
+
+                        // 3. 자식 문서 안의 모든 자식 요소들 중 가장 아래에 있는 녀석의 위치를 찾습니다.
+                        const children = iframeDoc.body.children;
+                        let maxBottom = 0;
+
+                        for (let i = 0; i < children.length; i++) {
+                          const rect = children[i].getBoundingClientRect();
+                          // 각 요소의 top 위치 + 해당 요소의 실제 높이 = 바닥면 위치
+                          const bottom = rect.top + iframeWindow.pageYOffset + rect.height;
+                          if (bottom > maxBottom) {
+                            maxBottom = bottom;
+                          }
+                        }
+
+                        // 4. 여백(Padding/Margin)을 고려해 가장 아래쪽 위치를 최종 높이로 설정
+                        // 만약 계산된 높이가 너무 작으면 scrollHeight를 대안으로 씁니다.
+                        const finalHeight = maxBottom > 0 ? maxBottom : iframeDoc.documentElement.scrollHeight;
+
+                        // 5. 하단이 딱 잘리는 것을 막기 위해 약간의 버퍼(예: 20px)를 더해줍니다.
+                        iframe.style.height = (finalHeight + 20) + 'px';
+
+                      } catch (e) {
+                        console.error("높이 계산 중 오류 발생:", e);
+                      }
+                  });
+              </script>
+
+          <!-- 리포트 리스트 미리보기 시 수정화면으로 가는 버튼 표기 -->
+          <div class="btnWrap">
+            <div class="btn_line_gray icon_btn"><img src="../../images/icon/icon_modi.svg" alt="icon">Modify</div>
+          </div>
+          <!-- 리포트 리스트 미리보기 시 수정화면으로 가는 버튼 표기 -->
+          
+				</div>
+			</div>
+			<div class="popBg"></div>
+		</div>
+		
+		<!-- umletter 미리보기 슬라이드 팝업 -->
+
+  </body>
+</html>
