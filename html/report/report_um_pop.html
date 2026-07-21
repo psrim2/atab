@@ -1,0 +1,87 @@
+<html><head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta charset="utf-8">
+<meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport" id="flightViewPort">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="format-detection" content="telephone=no">
+<title>CREW_TABLET</title>
+<!-- css load -->
+<link href="../../css/common.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/menu.css" rel="stylesheet">
+<link href="../../css/meal.css" rel="stylesheet">
+<link href="../../css/add_2024.css" rel="stylesheet">
+<link rel="stylesheet" href="../../vendor/miaps/css/miaps.css">
+<!-- //css load -->
+<!-- js load -->
+<script src="../../js/config.js"></script>
+<script>var requirejs = { waitSeconds: 0 };</script>
+<script data-main="js/flight/flight_main.js" src="../../vendor/require/require.js"></script>
+<!--// js load -->
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/flight/flight_main" src="../../js/flight/flight_main.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="../../vendor/jquery/jquery.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="sqlUtil" src="../../js/sqlUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="layerUtil" src="../../js/layerUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="i18n" src="../../vendor/require/i18n.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dateUtil" src="../../js/dateUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="seed" src="../../vendor/crypto/seed.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="handlebars" src="../../vendor/handlebars/handlebars-4.0.11.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jsel" src="../../vendor/jsel/jsel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="common" src="../../js/common.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mustache" src="../../vendor/mustache/mustache.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="async" src="../../vendor/async/async.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="../../vendor/require/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dataSyncUtil" src="../../js/dataSyncUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="logoutUtil" src="../../js/logoutUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="underscore" src="../../vendor/underscore/underscore.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/nls/acrew_resources" src="../../js/nls/acrew_resources.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="moment" src="../../vendor/moment/moment.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="miaps" src="../../vendor/miaps/js/miaps_hybrid.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="moment-timezone" src="../../vendor/moment/moment-timezone-with-data.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="../../vendor/miaps/js/miaps_notify.js" src="../../vendor/miaps/js/miaps_notify.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="utils" src="../../js/utils.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="templateUtil" src="../../js/templateUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/common/sch_header" src="../../js/common/sch_header.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/common/sch_sidebar" src="../../js/common/sch_sidebar.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/common/sidebar" src="../../js/common/sidebar.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="surveyPop" src="../../js/common/survey_pop.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/flight/service_info" src="../../js/flight/service_info.js"></script></head>
+
+<style>
+	.dimmed_custom{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background-color:#000;opacity:0.6; }
+	.dimmed_custom_1{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:110;background-color:#000;opacity:0.6; }
+	
+</style>
+<body id="dataBody" style="height: 938.216px;">
+	
+
+
+<!-- 상세 팝업 -->
+    <div class="report_add_popup umletter_list_pop" style="display: block; width: 90vw;">
+      <div class="head">
+          <span class="title">Um Letter</span>
+          <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="report_add_popup">
+      </div>
+      <div class="update_wrap">
+        <p>UM Letter Status</p>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+            <path d="M10.6904 0C12.4037 6.78571e-05 14.0793 0.508081 15.5039 1.45996C16.9283 2.41183 18.0387 3.76492 18.6943 5.34766C19.35 6.93062 19.5217 8.67307 19.1875 10.3535C18.8532 12.0339 18.0279 13.5775 16.8164 14.7891C15.6049 16.0005 14.0612 16.8258 12.3809 17.1602C10.7004 17.4944 8.95791 17.3226 7.375 16.667C5.79227 16.0113 4.43918 14.901 3.4873 13.4766C2.76707 12.3987 2.30143 11.1771 2.11719 9.9043H0L3.58203 2.9082L7.16309 9.9043H5.16504C5.31692 10.5808 5.5924 11.2273 5.98145 11.8096C6.60371 12.7408 7.48864 13.4669 8.52344 13.8955C9.55821 14.324 10.6975 14.4363 11.7959 14.2178C12.8942 13.9992 13.9035 13.4598 14.6953 12.668C15.4871 11.8761 16.0266 10.8669 16.2451 9.76855C16.4636 8.67006 16.3514 7.53085 15.9229 6.49609C15.4942 5.46134 14.7681 4.57638 13.8369 3.9541C12.9057 3.33198 11.8103 3.00007 10.6904 3C9.8621 2.99989 9.19043 2.32836 9.19043 1.5C9.19043 0.671642 9.8621 0.000112862 10.6904 0Z" fill="#1C2579"/>
+            </svg>
+            <span>Update</span>
+        </button>
+      </div>
+      <ul class="um_list">
+        <li class="disc">
+          <p>* 작성 대상 : 장거리 노선 및 5시간 이상 중거리 노선</p>
+          <p>* 중거리 대상 노선 : BKK, SGN, HKT, CGK, KTI, TAS</p>
+        </li>
+        <li>
+          <span class="seat_no">028A</span>
+          <span class="name">JEONG HANA</span>
+          <span class="gender">F</span>
+          <span class="status not_opened">Not Opened</span>
+        </li>
+        <li>
+          <span class="seat_no">030C</span>
+          <span class="name">KIM YOOJOONG</span>
+          <span class="gender">M</span>
+          <span class="status in_progress">In Progress</span>
+        </li>
+        <li>
+          <span class="seat_no">030C</span>
+          <span class="name">KIM YOOJOONG</span>
+          <span class="gender">M</span>
+          <span class="status sent">Sent</span>
+        </li>
+        <li class="status_disc">
+          <span>Not Opened 미작성</span><span>In Progress 임시 저장</span><span>Sent 통신 발송 완료</span>
+        </li>
+      </ul>
+</div>
+    <!--// 상세 팝업 -->
+
+	
+
+<div class="dimmed" style="display: block;"></div>
+
+
+
+
+
+</body></html>

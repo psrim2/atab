@@ -131,7 +131,11 @@
                             <select id="ctg_small" class="emptyChk">
                                 <option value="">-- 선택 --</option>
                             </select>
-                            <span class="btn_line_gray icon_btn add_btn"><img src="../../images/icon/icon_write.svg" alt="" ></span>
+                            <span class="icon_btn add_btn write_btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M8.32484 2.06083L9.05011 1.33556C9.83116 0.554516 11.0975 0.554516 11.8785 1.33556L12.5497 2.00669C13.3307 2.78773 13.3307 4.05406 12.5497 4.83511L11.8244 5.56038M8.32484 2.06083L1.39468 8.99099C1.03612 9.34956 0.82714 9.83093 0.81003 10.3377L0.750484 12.1016C0.730954 12.6801 1.20515 13.1543 1.78365 13.1347L3.54749 13.0752C4.05429 13.0581 4.53566 12.8491 4.89422 12.4905L11.8244 5.56038M8.32484 2.06083L11.8244 5.56038" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
                         </div>
                         <div class="rpt_kind free_txt">
                             <input class="basic_input" type="text" placeholder="내용을 입력해 주세요.">
@@ -151,7 +155,11 @@
                             <select id="ctg_small" class="emptyChk">
                                 <option value="">-- 선택 --</option>
                             </select>
-                            <span class="btn_line_gray icon_btn add_btn"><img src="../../images/icon/icon_write.svg" alt="" ></span>
+                            <span class="icon_btn add_btn write_btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M8.32484 2.06083L9.05011 1.33556C9.83116 0.554516 11.0975 0.554516 11.8785 1.33556L12.5497 2.00669C13.3307 2.78773 13.3307 4.05406 12.5497 4.83511L11.8244 5.56038M8.32484 2.06083L1.39468 8.99099C1.03612 9.34956 0.82714 9.83093 0.81003 10.3377L0.750484 12.1016C0.730954 12.6801 1.20515 13.1543 1.78365 13.1347L3.54749 13.0752C4.05429 13.0581 4.53566 12.8491 4.89422 12.4905L11.8244 5.56038M8.32484 2.06083L11.8244 5.56038" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
                         </div>
                         <div class="rpt_kind free_txt">
                             <input class="basic_input" type="text" placeholder="내용을 입력해 주세요.">
@@ -236,47 +244,20 @@
 				</div>
 				<div class="popConWrap">
 
-					<iframe id="myFrame" src="letter/umletter_1.html" width="100%" frameborder="0" scrolling="no"></iframe>
+					<iframe id="myFrame" src="letter/umletter_2.html" width="100%" frameborder="0" scrolling="no"></iframe>
 
-            <script>
-                const iframe = document.getElementById('myFrame');
-
-                    iframe.addEventListener('load', function() {
-                      try {
-                        // 1. 자식 창의 window와 document 객체에 접근
-                        const iframeWindow = iframe.contentWindow;
-                        const iframeDoc = iframeWindow.document;
-
-                        // 2. 내부 콘텐츠가 정렬(float 등)로 인해 높이가 깨지는 것을 방지하기 위해 
-                        // 자식 문서 body의 스타일을 임시로 셋팅합니다.
-                        iframeDoc.body.style.overflow = 'hidden';
-                        iframeDoc.body.style.height = 'auto';
-
-                        // 3. 자식 문서 안의 모든 자식 요소들 중 가장 아래에 있는 녀석의 위치를 찾습니다.
-                        const children = iframeDoc.body.children;
-                        let maxBottom = 0;
-
-                        for (let i = 0; i < children.length; i++) {
-                          const rect = children[i].getBoundingClientRect();
-                          // 각 요소의 top 위치 + 해당 요소의 실제 높이 = 바닥면 위치
-                          const bottom = rect.top + iframeWindow.pageYOffset + rect.height;
-                          if (bottom > maxBottom) {
-                            maxBottom = bottom;
-                          }
-                        }
-
-                        // 4. 여백(Padding/Margin)을 고려해 가장 아래쪽 위치를 최종 높이로 설정
-                        // 만약 계산된 높이가 너무 작으면 scrollHeight를 대안으로 씁니다.
-                        const finalHeight = maxBottom > 0 ? maxBottom : iframeDoc.documentElement.scrollHeight;
-
-                        // 5. 하단이 딱 잘리는 것을 막기 위해 약간의 버퍼(예: 20px)를 더해줍니다.
-                        iframe.style.height = (finalHeight + 20) + 'px';
-
-                      } catch (e) {
-                        console.error("높이 계산 중 오류 발생:", e);
-                      }
-                  });
-              </script>
+                    <script>
+                        // 자식 창에서 보내오는 높이 신호 감지
+                        window.addEventListener('message', function(e) {
+                            // 전달받은 데이터가 iframe 높이 조절용인지 확인
+                            if (e.data && e.data.type === 'resize-iframe') {
+                                const iframe = document.getElementById('myFrame');
+                                if (iframe) {
+                                    iframe.style.height = (e.data.height) + 'px';
+                                }
+                            }
+                        });
+                    </script>
           
 				</div>
 			</div>

@@ -30,6 +30,8 @@
 
       $(function(){
 
+        // umletter 미리보기 팝업 슬라이드
+
         $(".rpt_view_btn").click(function(){
           $(".slidePopWrap").removeClass("off")
         });
@@ -119,15 +121,20 @@
                       </div>
                       <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
                   </li>
+
+                  <!-- umletter 추가 리스트 -->
                   <li>
                       <span class="chkbox"><input type="checkbox" id="chk_3"><label for="chk_3"></label></span>
                       <div>
                           <span class="kind">UM LETTER</span>
                           <p>JEONG HANA</p>
                       </div>
-                      <img src="../../images/common/btn_view.svg" alt="" class="rpt_view_btn">
+                      <!-- 미리보기버튼 -->
+                      <img src="../../images/common/btn_view.svg" alt="" class="rpt_view_btn"> 
+                      <!-- 수정하기버튼 -->
                       <img src="../../images/common/btn_modify.svg" alt="" class="rpt_modify_btn">
                   </li>
+
               </ul>
           </div>
 
@@ -202,6 +209,8 @@
               </div>
             </div>
         </li>
+
+        <!-- umletter 추가 -->
         <li data-link="UM">
             <img src="../../images/icon/icon_report_um.svg" alt="icon">
             <div class="txtWrap">
@@ -241,45 +250,19 @@
 
 					<iframe id="myFrame" src="letter/umletter_1.html" width="100%" frameborder="0" scrolling="no"></iframe>
 
-            <script>
-                const iframe = document.getElementById('myFrame');
-
-                    iframe.addEventListener('load', function() {
-                      try {
-                        // 1. 자식 창의 window와 document 객체에 접근
-                        const iframeWindow = iframe.contentWindow;
-                        const iframeDoc = iframeWindow.document;
-
-                        // 2. 내부 콘텐츠가 정렬(float 등)로 인해 높이가 깨지는 것을 방지하기 위해 
-                        // 자식 문서 body의 스타일을 임시로 셋팅합니다.
-                        iframeDoc.body.style.overflow = 'hidden';
-                        iframeDoc.body.style.height = 'auto';
-
-                        // 3. 자식 문서 안의 모든 자식 요소들 중 가장 아래에 있는 녀석의 위치를 찾습니다.
-                        const children = iframeDoc.body.children;
-                        let maxBottom = 0;
-
-                        for (let i = 0; i < children.length; i++) {
-                          const rect = children[i].getBoundingClientRect();
-                          // 각 요소의 top 위치 + 해당 요소의 실제 높이 = 바닥면 위치
-                          const bottom = rect.top + iframeWindow.pageYOffset + rect.height;
-                          if (bottom > maxBottom) {
-                            maxBottom = bottom;
-                          }
-                        }
-
-                        // 4. 여백(Padding/Margin)을 고려해 가장 아래쪽 위치를 최종 높이로 설정
-                        // 만약 계산된 높이가 너무 작으면 scrollHeight를 대안으로 씁니다.
-                        const finalHeight = maxBottom > 0 ? maxBottom : iframeDoc.documentElement.scrollHeight;
-
-                        // 5. 하단이 딱 잘리는 것을 막기 위해 약간의 버퍼(예: 20px)를 더해줍니다.
-                        iframe.style.height = (finalHeight + 20) + 'px';
-
-                      } catch (e) {
-                        console.error("높이 계산 중 오류 발생:", e);
+          <script>
+              // 자식 창에서 보내오는 높이 신호 감지
+              window.addEventListener('message', function(e) {
+                  // 전달받은 데이터가 iframe 높이 조절용인지 확인
+                  if (e.data && e.data.type === 'resize-iframe') {
+                      const iframe = document.getElementById('myFrame');
+                      if (iframe) {
+                          // 하단 버튼 영역 40픽셀 추가
+                          iframe.style.height = (e.data.height + 40) + 'px';
                       }
-                  });
-              </script>
+                  }
+              });
+          </script>
 
           <!-- 리포트 리스트 미리보기 시 수정화면으로 가는 버튼 표기 -->
           <div class="btnWrap">
