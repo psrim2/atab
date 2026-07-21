@@ -1,0 +1,218 @@
+.txtCenter{text-align: center;}
+
+
+.componentWrap{background-color: #222; height: auto; align-items: baseline;}
+.componentWrap{display: flex; gap: 10px;}
+.componentWrap .c_pop_box{
+	position: relative !important;
+	left: inherit !important;
+	top: inherit !important;
+	transform: translate( 0, 0) !important;
+	width: 400px;
+	min-width: inherit !important;
+}
+
+
+
+
+
+
+/* ******************************
+  2024 03 팝업 정리
+  ****************************** */
+  
+/* popup BG */
+.pax_detail_popup{
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 120;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+/* 팝업 박스 -BG basic */
+.pop_layer, 
+.ready_popup, .vacant_seat_popup,
+.pax_detail,
+.popWrap .popBox,
+.report_add_popup,
+.rpt_srch_popup,
+.manual_popup,
+.staff_schedule_search_popup,
+.c_pop_box{
+	background-color: var(--white);
+	border: 0 !important;
+	border-radius: 10px;
+	padding: 15px;
+	position: fixed;
+	max-width: 100vw;
+    min-width: 50vw;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    margin: 0 !important;
+}
+.staff_schedule_search_popup{width: 80vw;}
+
+
+
+/* 팝업 박스 - 버튼있음 */
+
+.pop_layer:has(.btn),
+.ready_popup:has(.btn),
+.pax_detail:has(button),
+.popWrap .popBox:has(.bottomBtn),
+.rpt_srch_popup:has(.crew_confirm_btn){
+	padding-bottom: 70px;
+}
+
+
+.pop_layer .common_btn_1{margin-left: 0; margin-right: 0;}
+.pop_layer > .common_btn_1 + .common_btn_1{margin-top: 10px !important;}
+.pop_layer > #cancelBtn{border: 1px solid var(--gray03) !important;}
+
+
+/* 팝업 타이틀 */
+.pop_layer .header, 
+.ready_popup .header, 
+.vacant_seat_popup .header,
+.report_add_popup .head,
+.rpt_srch_popup .head,
+.manual_popup .header,
+.staff_schedule_search_popup .head,
+.c_pop_box .header{
+	margin: -15px -15px 15px -15px;
+	background-color: var(--white) !important;
+	border-radius: 10px 10px 0 0;
+	height: 50px !important;
+	line-height: 50px;
+}
+.pop_layer .header{padding-left: 15px;} 
+.c_pop_box .header{display: flex;align-items: center;border-bottom: 1px solid var(--black);}
+.ready_popup .header h2, 
+.vacant_seat_popup .header h2,
+.rpt_srch_popup .head .title,
+.manual_popup .header h2,
+.staff_schedule_search_popup .head .title,
+.c_pop_box .header h2{
+	font-size: 20px;
+	line-height: 54px;
+	font-weight: bold;
+    font-family: 'ntss-bold';
+    color: var(--black);
+}
+.c_pop_box .header h2{flex: 1; text-align: center; line-height: 48px; padding: 2px 15px 0;}
+.c_pop_box .header:has(.c_pop_h_close) h2{padding-left: 42px; padding-right: 0;}
+.c_pop_box .header h2.left{text-align: left;padding-left: 15px;color: var(--black);}
+
+/* 팝업 타이틀 닫기버튼*/
+.pop_layer .header .x_btn,
+.pop_layer .header img,
+.ready_popup .header img,
+.vacant_seat_popup .header img,
+.rpt_srch_popup .head img,
+.manual_popup .header img,
+.staff_schedule_search_popup .head img{
+    position: absolute;
+    right: 10px;
+    top: 4px;
+}
+
+.c_pop_box .header .c_pop_h_close{width: 40px; height: 40px; position: relative; margin: 0 2px 0 auto; }
+.c_pop_box .header .c_pop_h_close:after, .c_pop_box .header .c_pop_h_close:before{
+	content: "";
+	height: 18px;
+	width: 2px;
+	background-color: var(--black);
+	position: absolute;
+	transform: rotate(45deg);
+	margin-top: -10px;
+}
+.c_pop_box .header .c_pop_h_close:before{transform: rotate(-45deg);}
+
+
+/* 팝업 컨텐츠 */
+.vacant_seat_popup .vacant_seat_list_wrap,
+.c_pop_box .c_pop_con{
+	overflow: auto;
+	max-height: 660px;
+	min-height: 40px;
+	padding: 0;
+	margin: 0;
+}
+.c_pop_box .c_pop_con p{font-size: 16px;}
+
+
+
+
+/* 팝업 하단버튼 */
+.ready_popup_wrap .btn,
+.pax_detail button,
+.popBox .bottomBtn,
+.rpt_srch_popup .crew_confirm_btn{
+	position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    margin: 0;
+    width: auto !important;
+}
+
+.c_pop_box .c_pop_btn_wrap{display: flex; gap: 5px;}
+.c_pop_box .c_pop_btn_wrap.row{flex-direction: column;}
+.c_pop_box .c_pop_btn_wrap button{flex: 1;}
+
+
+
+
+/* ******************************
+  2024 03 button
+  ****************************** */
+.btn_line_gray, 
+.btn_line_bg_gray,
+.btn_color_blue,
+.btn_color_darkgray,
+.btn_color_gray,
+.btn_color_lightgray{
+	height: 40px; 
+	line-height: 38px; 
+	font-size: 16px; 
+	border-radius: 5px;
+	text-align: center;
+	box-sizing: border-box;
+	background-color: var(--white);
+	color: var(--black);
+	padding: 2px 10px 0;
+	gap: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.icon_btn img{height: 15px; margin-bottom: 5px;}
+.btn_line_gray{border: 1px solid var(--gray03);}
+.btn_line_bg_gray{border: 1px solid var(--gray03); background-color: var(--gray01);}
+.btn_color_blue{background-color: var(--fly01);color: var(--white);}
+.btn_color_darkgray{background-color: var(--gray06); color: var(--white);}
+.btn_color_gray{background-color: var(--gray06);color: var(--white);}
+.btn_color_lightgray{background-color: var(--gray02);}
+
+.btn_line_gray.dim, 
+.btn_line_bg_gray.dim,
+.btn_color_blue.dim,
+.btn_color_darkgray.dim,
+.btn_color_gray.dim,
+.btn_color_lightgray.dim{opacity:.2; cursor: default;}
+
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 599px) {
+   .c_pop_box .header h2{font-size:1.2em; padding-left: 40px;}
+}
+  
+
+
+
