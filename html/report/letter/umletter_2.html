@@ -12,12 +12,11 @@
 
     /* 2. 메일 본문 전체에 폰트 지정 */
     body, table, td, p, div, span {
-      /* 앞에 선언한 Pretendard를 우선적으로 불러오되, 
-         지원하지 않는 환경을 위해 AppleSDGothicNeo, Malgun Gothic 등을 차례로 적어줍니다. */
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", helvetica, sans-serif !important;
     }
-    .info-column div + div{font-size: 18px !important;}
+    .info-column div + div{font-size: 18px !important; border-bottom: 1px solid #222;}
     *{word-break: keep-all;}
+    td.flyInfo{border-bottom: 0 !important;}
     /* 모바일 대응 미디어 쿼리 */
     @media only screen and (max-width: 600px) {
       .info-column {
@@ -44,7 +43,7 @@
         <table cellpadding="0" cellspacing="0" border="0" class="container" width="100%" style="max-width: 800px; min-width: 320px; background-color: #f6f8fc; overflow: hidden;">
           <!-- bg line-->
           <tr>
-            <td background="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_img_bg.png" bgcolor="#EDEEF3" align="left" height="10" style="background-size: cover; background-position: center bottom; height: 10px;"></td>
+            <td background="img/02_img_bg.png" bgcolor="#EDEEF3" align="left" height="10" style="background-size: cover; background-position: center bottom; height: 10px;"></td>
           </tr>
         
 
@@ -54,11 +53,11 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
                   <td align="center" heigith="20" >
-                    <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/ci.svg" alt="ASIANA AIRLINES info" width="104" height="10" style="display: block; margin-bottom: 20px;" />
+                    <img src="img/ci.svg" alt="ASIANA AIRLINES info" width="104" height="10" style="display: block; margin-bottom: 20px;" />
                   </td>
                 </tr>
                 <tr>
-                  <td align="center"style="font-size: 26px; line-height: 1.2; font-weight: 800; color: #111111; padding-bottom: 30px;">
+                  <td align="center"style="font-size: 26px; line-height: 1.2; font-weight: 800; color: #111111; padding: 0 10px 30px;">
                     A Letter From Flying Mom
                   </td>
                 </tr>
@@ -92,7 +91,7 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 30px; margin-bottom: 10px;">
                       <tr>
                          <td width="36" valign="middle" style="padding: 10px 0 10px 10px;">
-                             <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_flt.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
+                             <img src="img/02_icon_flt.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
                         </td>
                         <td style="padding: 10px 10px 10px 0; font-size: 14px; font-weight: bold; color: #111111; line-height: 1;">
                           Flight Info 비행정보
@@ -104,14 +103,14 @@
                      <div style="padding: 5px 15px";>
                       <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto; font-family: sans-serif; border-collapse: collapse;">
                         <tr>
-                          <td style="font-size: 0; text-align: center;">
+                          <td class="flyInfo" style="font-size: 0; text-align: center; border-bottom: 1px solid #222;">
                             
                             <!-- [1] 탑승일 블록 -->
                             <div class="info-column" style="display: inline-block; width: 25%; vertical-align: top; font-size: 14px;">
                               <div style="font-size: 12px; color: #868697; line-height: 1.4; border-bottom: 1px solid #ddd; padding: 5px 0 2px 0; ">
                                 Date 탑승일
                               </div>
-                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; border-bottom: 1px solid #222; padding: 16px 0;">
+                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; padding: 16px 0;">
                                 04 Nov 24
                               </div>
                             </div>
@@ -121,17 +120,17 @@
                               <div style="font-size: 12px; color: #868697; line-height: 1.4; border-bottom: 1px solid #ddd; padding: 5px 0 2px 0; ">
                                 Flight 편명
                               </div>
-                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; border-bottom: 1px solid #222; padding: 16px 0;">
+                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; padding: 16px 0;">
                                 OZ 201
                               </div>
                             </div>
 
                             <!-- [3] 구간 블록 (모바일에서 여백 추가를 위해 mobile-gap 클래스 부여) -->
                             <div class="info-column mobile-gap" style="display: inline-block; width: 25%; vertical-align: top; font-size: 14px;">
-                              <div style="font-size: 12px; color: #868697; line-height: 1.4; border-bottom: 1px solid #ddd; padding: 5px 0 2px 0; ">
+                              <div style="font-size: 12px; letter-spacing: -.5px; color: #868697; line-height: 1.4; border-bottom: 1px solid #ddd; padding: 5px 0 2px 0; ">
                                 From-To 구간
                               </div>
-                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; border-bottom: 1px solid #222; padding: 16px 0;">
+                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; padding: 16px 0;">
                                 ICN - LAX
                               </div>
                             </div>
@@ -141,7 +140,7 @@
                               <div style="font-size: 12px; color: #868697; line-height: 1.4; border-bottom: 1px solid #ddd; padding: 5px 0 2px 0; ">
                                 Seat 좌석
                               </div>
-                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; border-bottom: 1px solid #222; padding: 16px 0;">
+                              <div style="font-size: 14px; font-weight: bold; color: #111111; line-height: 1.2; padding: 16px 0;">
                                 028A
                               </div>
                             </div>
@@ -161,7 +160,7 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 30px; margin-bottom: 10px;">
                       <tr>
                          <td width="36" valign="middle" style="padding: 10px 0 10px 10px;">
-                             <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_boarding.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
+                             <img src="img/02_icon_boarding.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
                         </td>
                         <td style="padding: 10px 10px 10px 0; font-size: 14px; font-weight: bold; color: #111111; line-height: 1;">
                           While Boarding 탑승 시 표정
@@ -188,7 +187,7 @@
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 30px; margin-bottom: 10px;">
                       <tr>
                         <td width="36" valign="middle" style="padding: 10px 0 10px 10px;">
-                             <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
+                             <img src="img/02_icon_meal.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
                         </td>
                         <td style="padding: 10px 10px 10px 0; font-size: 14px; font-weight: bold; color: #111111; line-height: 1;">
                           Meal 식사
@@ -212,7 +211,7 @@
                                         </tr>
                                         <tr>
                                             <td width="20" valign="top">
-                                              <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal_01.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
+                                              <img src="img/02_icon_meal_01.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
                                             </td>
                                             <td valign="middle" style="font-size: 16px; color: #111111;">
                                               불고기 볶음 (Stir-Fried Bulgogi)
@@ -221,7 +220,7 @@
 
                                         <tr>
                                             <td width="20" valign="top">
-                                              <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal_02.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
+                                              <img src="img/02_icon_meal_02.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
                                             </td>
                                             <td valign="middle" style="font-size: 16px; color: #111111;">
                                               오렌지 주스 (Orange Juice)
@@ -229,7 +228,7 @@
                                         </tr>
                                         <tr>
                                             <td width="20" valign="top">
-                                              <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal_03.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
+                                              <img src="img/02_icon_meal_03.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
                                             </td>
                                             <td valign="middle" style="font-size: 16px; color: #111111;">
                                               즐겁게 식사를 하였습니다.
@@ -260,7 +259,7 @@
                                         </tr>
                                         <tr>
                                             <td width="20" valign="top">
-                                              <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal_01.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
+                                              <img src="img/02_icon_meal_01.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
                                             </td>
                                             <td valign="middle" style="font-size: 16px; color: #111111;">
                                               불고기 볶음 (Stir-Fried Bulgogi)
@@ -268,7 +267,7 @@
                                         </tr>
                                         <tr>
                                             <td width="20" valign="top">
-                                              <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_meal_02.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
+                                              <img src="img/02_icon_meal_02.svg" alt="Meal" width="14" height="14" margin-top="3" style="display: block; border: 0; margin-top: 4px;" />
                                             </td>
                                             <td valign="middle" style="font-size: 16px; color: #111111;">
                                               오렌지 주스 (Orange Juice)
@@ -292,7 +291,7 @@
                         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 30px; margin-bottom: 10px;">
                           <tr>
                             <td width="36" valign="middle" style="padding: 10px 0 10px 10px;">
-                                <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_enter.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
+                                <img src="img/02_icon_enter.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
                             </td>
                             <td style="padding: 10px 10px 10px 0; font-size: 14px; font-weight: bold; color: #111111; line-height: 1;">
                               Inflight Entertainment / Sleep 휴게시간
@@ -319,7 +318,7 @@
                      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 30px; margin-bottom: 10px;">
                       <tr>
                         <td width="36" valign="middle" style="padding: 10px 0 10px 10px;">
-                             <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_icon_greeting.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
+                             <img src="img/02_icon_greeting.svg" alt="flight info" width="31" height="20" style="display: block; border: 0;" />
                         </td>
                         <td style="padding: 10px 10px 10px 0; font-size: 14px; font-weight: bold; color: #111111; line-height: 1;">
                            Greeting From Crew In Charge
@@ -356,7 +355,7 @@
                   </tr>
                   <tr>
                     <td align="center" style="padding: 55px 0;">
-                      <img src="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/ci.svg" alt="Asiana Airlines" width="145" height="14" style="display: block; border: 0;" />
+                      <img src="img/ci.svg" alt="Asiana Airlines" width="145" height="14" style="display: block; border: 0;" />
                     </td>
                   </tr>
                 </table>
@@ -365,7 +364,7 @@
 
            <!-- bg line-->
           <tr>
-            <td background="https://raw.githubusercontent.com/psrim2/test/refs/heads/main/02_img_bg.png" bgcolor="#EDEEF3" align="left" height="10" style="background-size: cover; background-position: center bottom; height: 10px;"></td>
+            <td background="img/02_img_bg.png" bgcolor="#EDEEF3" align="left" height="10" style="background-size: cover; background-position: center bottom; height: 10px;"></td>
           </tr>
 
         </table>
@@ -373,6 +372,19 @@
       </td>
     </tr>
   </table>
+
+    <script>
+    window.addEventListener('load', function() {
+      // 이미지 등이 완전히 로드된 후 실제 문서의 전체 높이를 측정합니다.
+      var finalHeight = Math.max(
+        document.body.scrollHeight, 
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight
+      );
+      // 부모 창으로 높이 전달
+      window.parent.postMessage({ type: 'resize-iframe', height: finalHeight }, '*');
+    });
+  </script>
 
 </body>
 </html>
