@@ -3302,7 +3302,7 @@ div:has(#reDownloadManual) {
 .rpt_view_radio *{box-sizing: border-box; font-size: 12px;}
 .rpt_con_wrap.rpt_view_radio{margin-bottom: 50px; display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr);}
 
-.rpt_con_wrap.rpt_view_radio .radio_wrap{border: 1px solid var(--gray02); border-radius: 2px; overflow: hidden; transition: .2s; min-height: 160px; display: flex; flex-direction: column;}
+.rpt_con_wrap.rpt_view_radio .radio_wrap{border: 1px solid var(--gray02); border-radius: 2px; overflow: hidden; transition: .2s; height: 160px; display: flex; flex-direction: column;}
 .rpt_con_wrap.rpt_view_radio .radio{flex: 1;  display: flex;  flex-direction: column;  gap: 10px; align-items: center; align-items: end; }
 
 .rpt_con_wrap.rpt_view_radio .radio_wrap:has(input[type='radio']:checked){border: 3px solid var(--fly01); padding: 10px;}
@@ -3310,6 +3310,4 @@ div:has(#reDownloadManual) {
 
 .rpt_con_wrap.rpt_view_radio .radio .btn_preview{padding: 5px 20px; display: flex; gap: 10px; align-items: center;}
 .rpt_con_wrap.rpt_view_radio .radio .btn_preview img{height: 12px;}
-
-.rpt_con_wrap.rpt_view_radio .radio img{width: 100%;}
 
