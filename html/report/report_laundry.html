@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>칭송</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/style_2.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+   
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+
+  <script>
+
+    //리포트 공통 스크립트 
+    $(function(){
+        //crew search list 개별 선택/해제
+        $(".crew_srch_popup .crew_srch_list > li").click(function(){
+            if($(this).hasClass("selected")){
+                $(this).removeClass("selected");
+            }else{
+                $(this).addClass("selected");
+            }
+        });
+
+        //crew search list 전체 선택/해제
+        $(".crew_srch_popup .crew_all_btn").click(function(){
+            if($("#crew_all").is(":checked")){
+                $(".crew_srch_popup .crew_srch_list > li").removeClass("selected");
+            }else{
+                $(".crew_srch_popup .crew_srch_list > li").addClass("selected");
+            }
+        });
+        
+        //리스트 삭제
+        $(".rpt_pax_list .del_list_btn").click(function(){
+            $(this).parent('li').remove();
+        });
+    });
+  </script>  
+  </head>
+  <body>
+   <section class="container white_bg">
+		<!-- header-->
+		<header class="rpt_header">
+			<a class="back_btn"></a>
+			<h2>세탁비 발생 보고서</h2>
+		</header>
+		<div class="sub_header rpt_flt_info" style="top: 49px;">
+			<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+			<span>OZ 202</span>
+			/
+			<span>HL7634</span>
+			/
+			<span>ICN - LAX</span>
+		</div>
+		<script type="text/x-handlebars-template" id="clean-header-template">
+			<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+			<span>{{carr_cd}} {{flt_nbr}}</span>
+			/
+			<span>{{airc_reg}}</span>
+			/
+			<span>{{from_airp_cd}} - {{to_airp_cd}}</span>
+		</script>
+		<!-- contents -->
+		<div class="contents" id="contents" style="padding-top: 113.134px;">
+			<!--  report -->
+			<div class="rpt_title">
+				<span class="required"><font style="color: #D73554;">*</font>고객정보</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="passengerList">
+						<!-- 리스트 없을 때 -->
+						<li class="default_passenger">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<p id="passengerInfo"><input type="text" placeholder="고객 이름 / 회원번호 / 좌석번호" readonly=""></p>
+						</li>
+				</ul>
+				<span class="add_btn popup_open" data-open="pax_srch_popup" style="padding: 10px;">
+					<img src="../../images/icon/icon_search_thin.svg" alt="" class="pax_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span class="required"><font style="color: #D73554;">*</font>담당승무원</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="crewList">
+						<!-- 리스트 없을 때 -->
+						<li class="default_crew">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p id="crewInfo"><input type="text" placeholder="담당승무원 이름 / 사번 / 소속그룹" readonly=""></p>
+						</li>
+				</ul>
+				<span class="add_btn popup_open" data-open="crew_srch_popup">
+					<img src="../../images/common/btn_report_mem_add.svg" alt="" class="crew_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span class="required"><font style="color: #D73554;">*</font>분류</span>
+			</div>
+			<div class="rpt_kind" style="grid-template-columns: auto;">
+				<select id="category1" class="emptyChk">
+					<option value="">-- 선택 --</option>
+						<option value="CL01">음료쏟음</option>
+						<option value="CL02">O.H.B 관련</option>
+						<option value="CL03">좌석클리닝</option>
+						<option value="CL04">기타</option>
+				</select> 
+			</div>
+			<div class="rpt_title">
+				<span class="required"><font style="color: #D73554;">*</font>금액</span>
+			</div>
+			<div class="rpt_category">
+				<div class="half">
+						<div>
+							<span>01</span>
+							<input type="text" placeholder="금액을 입력해주세요" class="cost1 emptyChk">
+							<select name="" id="cost_type1"><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+						<div>
+							<span>02</span>
+							<input type="text" placeholder="금액을 입력해주세요" class="cost2 emptyChk">
+							<select name="" id="cost_type2"><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+				</div>
+			</div>
+			<div class="rpt_title">
+				<span>일련번호</span>
+			</div>
+			<div class="rpt_category">
+				<span class="add_btn add_coupon"><img src="../../images/common/btn_report_mem_add.svg" alt=""></span>
+					<div id="coupon_1" class="coupon">
+						<span>번호</span>
+						<input type="text" placeholder="번호입력, 예)12345" class="underline coupon_no emptyChk">
+						<input type="text" class="underline coupon_type emptyChk" placeholder="문자입력, 예)DKZA">
+					</div>
+			</div>
+			<div class="rpt_title">
+				<span>내용입력</span>
+			</div>
+			<ul class="rpt_txt_list">
+					<li>
+						<span class="required"><font style="color: #D73554;">*</font>제목</span>
+						<input type="text" placeholder="제목을 입력해주세요" class="input_title emptyChk">
+					</li>
+					<li>
+						<span class="required"><font style="color: #D73554;">*</font>내용</span>
+						<textarea placeholder="내용을 입력해주세요" class="input_content emptyChk"></textarea>
+					</li>
+					<li>
+						<span class="required"><font style="color: #D73554;">*</font>조치</span>
+						<textarea placeholder="조치사항을 입력해주세요" class="input_action emptyChk"></textarea>
+					</li>
+					<li>
+						<span>기타</span>
+						<textarea placeholder="기타사항을 입력해주세요" class="input_etc"></textarea>
+					</li>
+			</ul>
+			<div class="rpt_title">
+				<span>사진첨부</span>
+			</div>
+			<div class="rpt_pic_wrap">
+				<!-- 사진은 최대 5개. li 는 그대로 유지. 사진 추가시 이미지와 del 버튼 추가.-->
+				<ul class="pic_list">
+					<li>
+						<img src="" alt="" id="pic0">
+						<span id="icon0"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic1">
+						<span id="icon1"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic2">
+						<span id="icon2"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic3">
+						<span id="icon3"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic4">
+						<span id="icon4"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic5">
+						<span id="icon5"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic6">
+						<span id="icon6"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic7">
+						<span id="icon7"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic8">
+						<span id="icon8"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic9">
+						<span id="icon9"></span>
+					</li>
+				</ul>
+				<div class="pic_btn_box">
+					<span class="camera popup_open" data-open="pic_popup"></span>
+					<br>
+					<span class="gallery popup_open" data-open="pic_popup"></span>
+				</div>
+			</div>
+			<!-- delete ,save button-->
+			<div class="report_btn_box rpt_form ">
+				<p id="deleteBtn">
+					<img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE
+				</p>
+				<p id="saveBtn">
+					<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+				</p>
+			</div>
+		</div>
+		<script type="text/x-handlebars-template" id="clean-report-template">
+			<!--  report -->
+			<div class="rpt_title">
+				<span class="required">{{report_contents.t_paxInfo}}</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="passengerList">
+					{{#hbfn_isNotEmpty passengerList}}
+					<li class="default_passenger" style="display: none;">
+						<img src="../../images/icon/icon_cumtomer.svg" alt="">
+						<p id="passengerInfo"><input type="text" placeholder="{{report_contents.default_passenger}}" readonly></p>
+					</li>
+					{{#passengerList}}
+						<li class="list">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<p id="{{relation_id}}">{{name}} / {{acno}} / {{seat_no}}</p>
+							<img src="../../images/common/btn_list_del.svg" alt="" class="paxDel">
+						</li>
+					{{/passengerList}}
+					{{else}}
+						<!-- 리스트 없을 때 -->
+						<li class="default_passenger">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<p id="passengerInfo"><input type="text" placeholder="{{report_contents.default_passenger}}" readonly></p>
+						</li>
+					{{/hbfn_isNotEmpty}}
+				</ul>
+				<span class="add_btn popup_open" data-open="pax_srch_popup" style="padding: 10px;">
+					<img src="../../images/icon/icon_search_thin.svg" alt="" class="pax_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span class="required">{{report_contents.t_crewInfo}}</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="crewList">
+					{{#hbfn_isNotEmpty crewList}}
+					<li class="default_crew" style="display: none;">
+						<img src="../../images/icon/icon_cabin.svg" alt="">
+						<p id="crewInfo"><input type="text" placeholder="{{report_contents.default_crew}}" readonly></p>
+					</li>
+					{{#crewList}}
+						<li class="list">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p id="{{empl_nbr}}" data-rank-name="{{rank_name}}">{{cabin_name}} / {{cabin_name_english}} / {{empl_nbr}} / {{group_code}}</p>
+							<img src="../../images/common/btn_list_del.svg" alt="" class="crewDel">
+						</li>
+					{{/crewList}}
+					{{else}}
+						<!-- 리스트 없을 때 -->
+						<li class="default_crew">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p id="crewInfo"><input type="text" placeholder="{{report_contents.default_crew}}" readonly></p>
+						</li>
+					{{/hbfn_isNotEmpty}}
+				</ul>
+				<span class="add_btn popup_open" data-open="crew_srch_popup">
+					<img src="../../images/common/btn_report_mem_add.svg" alt="" class="crew_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span class="required">{{report_contents.t_category}}</span>
+			</div>
+			<div class="rpt_kind" style="grid-template-columns: auto;">
+				<select id="category1" class="emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					<option value="">{{@root.report_contents.default_select}}</option>
+					{{#reportCode}}
+						<option value="{{code}}">{{description}}</option>
+					{{/reportCode}}
+				</select> 
+			</div>
+			<div class="rpt_title">
+				<span class="required">{{@root.report_contents.t_cost}}</span>
+			</div>
+			<div class="rpt_category">
+				<div class="half">
+					{{#hbfn_isNotEmpty report_detail}}
+					{{#report_detail}}
+						<div>
+							<span>01</span>
+							<input type="text" placeholder="{{@root.report_contents.cost_placeholder}}" value="{{cost1}}" class="cost1 emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+							<select name="" id="cost_type1" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+						<div>
+							<span>02</span>
+							<input type="text" placeholder="{{@root.report_contents.cost_placeholder}}" value="{{cost2}}" class="cost2 emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+							<select name="" id="cost_type2" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+					{{/report_detail}}
+					{{else}}
+						<div>
+							<span>01</span>
+							<input type="text" placeholder="{{report_contents.cost_placeholder}}" class="cost1 emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+							<select name="" id="cost_type1" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+						<div>
+							<span>02</span>
+							<input type="text" placeholder="{{report_contents.cost_placeholder}}" class="cost2 emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+							<select name="" id="cost_type2" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><option value="₩">₩</option><option value="$">$</option></select>
+						</div>
+					{{/hbfn_isNotEmpty}}
+				</div>
+			</div>
+			<div class="rpt_title">
+				<span>{{@root.report_contents.t_coupon_no1}}</span>
+			</div>
+			<div class="rpt_category">
+				<span class="add_btn add_coupon"><img src="../../images/common/btn_report_mem_add.svg" alt=""></span>
+				{{#hbfn_isNotEmpty report_detail}}
+				{{#report_detail}}
+					<div id="coupon_1" class="coupon">
+						<span>{{@root.report_contents.rpt_no}}</span>
+						<input type="text" placeholder="{{@root.report_contents.no_placeholder}}" class="underline coupon_no emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+						<input type="text" class="underline coupon_type emptyChk" placeholder="{{@root.report_contents.text_placeholder}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</div>
+					<div id="coupon_2" class="coupon" style="display:none;">
+						<span>{{@root.report_contents.rpt_no}}</span>
+						<input type="text" placeholder="{{@root.report_contents.no_placeholder}}" class="underline coupon_no emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+						<input type="text" class="underline coupon_type emptyChk" placeholder="{{@root.report_contents.text_placeholder}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</div>
+					<div id="coupon_3" class="coupon" style="display:none;">
+						<span>{{@root.report_contents.rpt_no}}</span>
+						<input type="text" placeholder="{{@root.report_contents.no_placeholder}}"class="underline coupon_no emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+						<input type="text" class="underline coupon_type emptyChk" placeholder="{{@root.report_contents.text_placeholder}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</div>
+					<div id="coupon_4" class="coupon" style="display:none;">
+						<span>{{@root.report_contents.rpt_no}}</span>
+						<input type="text" placeholder="{{@root.report_contents.no_placeholder}}" class="underline coupon_no emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+						<input type="text" class="underline coupon_type emptyChk" placeholder="{{@root.report_contents.text_placeholder}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</div>
+				{{/report_detail}}
+				{{else}}
+					<div id="coupon_1" class="coupon">
+						<span>{{@root.report_contents.rpt_no}}</span>
+						<input type="text" placeholder="{{report_contents.no_placeholder}}" class="underline coupon_no emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+						<input type="text" class="underline coupon_type emptyChk" placeholder="{{report_contents.text_placeholder}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</div>
+				{{/hbfn_isNotEmpty}}
+			</div>
+			<div class="rpt_title">
+				<span>{{report_contents.t_content}}</span>
+			</div>
+			<ul class="rpt_txt_list">
+				{{#hbfn_isNotEmpty report_detail}}
+				{{#report_detail}}
+					<li>
+						<span class="required">{{@root.report_contents.rpt_title}}</span>
+						<input type="text" placeholder="{{@root.report_contents.title_placeholder}}" class="input_title emptyChk" value="{{title}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</li>
+					<li>
+						<span class="required">{{@root.report_contents.rpt_content}}</span>
+						<textarea placeholder="{{@root.report_contents.content_placeholder}}" class="input_content emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents1}}</textarea>
+					</li>
+					<li>
+						<span class="required">{{@root.report_contents.rpt_action}}</span>
+						<textarea placeholder="{{@root.report_contents.action_placeholder}}" class="input_action emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents2}}</textarea>
+					</li>
+					<li>
+						<span>{{@root.report_contents.rpt_etc}}</span>
+						<textarea placeholder="{{@root.report_contents.etc_placeholder}}" class="input_etc" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents3}}</textarea>
+					</li>
+				{{/report_detail}}
+				{{else}}
+					<li>
+						<span class="required">{{report_contents.rpt_title}}</span>
+						<input type="text" placeholder="{{report_contents.title_placeholder}}" class="input_title emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</li>
+					<li>
+						<span class="required">{{report_contents.rpt_content}}</span>
+						<textarea placeholder="{{report_contents.content_placeholder}}" class="input_content emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+					<li>
+						<span class="required">{{report_contents.rpt_action}}</span>
+						<textarea placeholder="{{report_contents.action_placeholder}}" class="input_action emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+					<li>
+						<span>{{report_contents.rpt_etc}}</span>
+						<textarea placeholder="{{report_contents.etc_placeholder}}" class="input_etc" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+				{{/hbfn_isNotEmpty}}	
+			</ul>
+			<div class="rpt_title">
+				<span>{{@root.report_contents.t_addPhoto}}</span>
+			</div>
+			<div class="rpt_pic_wrap">
+				<!-- 사진은 최대 5개. li 는 그대로 유지. 사진 추가시 이미지와 del 버튼 추가.-->
+				<ul class="pic_list">
+					<li>
+						<img src="" alt="" id="pic0">
+						<span id="icon0"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic1">
+						<span id="icon1"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic2">
+						<span id="icon2"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic3">
+						<span id="icon3"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic4">
+						<span id="icon4"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic5">
+						<span id="icon5"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic6">
+						<span id="icon6"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic7">
+						<span id="icon7"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic8">
+						<span id="icon8"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic9">
+						<span id="icon9"></span>
+					</li>
+				</ul>
+				<div class="pic_btn_box">
+					<span class="camera popup_open" data-open="pic_popup"></span>
+					<br>
+					<span class="gallery popup_open" data-open="pic_popup"></span>
+				</div>
+			</div>
+			<!-- delete ,save button-->
+			<div class="report_btn_box rpt_form {{#hbfn_if send_yn 'Y'}}disable{{/hbfn_if}}">
+				<p id="deleteBtn">
+					<img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE
+				</p>
+				<p id="saveBtn">
+					<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+				</p>
+			</div>
+		</script> 
+		<!-- category2 -->
+		<script type="text/x-handlebars-template" id="report-code-template">
+			<option value="">{{@root.report_contents.default_select}}</option>
+			{{#reportCodeDetail}}
+				<option value="{{code}}">{{description}}</option>
+			{{/reportCodeDetail}}
+		</script>
+	<div class="pinConfirmPop"></div><div id="commonPop"></div></section>
+
+    <!-- 승객 검색 팝업( 모든 승객 리스트 표시, 검색시 검색결과표시 ) -->
+    <div class="pax_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">PASSENGER SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="pax_srch_popup">
+        </div>
+        <!-- 기본 -->
+        <div class="srch_box">
+            <input type="text" placeholder="SEARCH"><img src="../../images/icon/icon_search_thin.svg" alt="">
+        </div>
+        <!-- 검색 결과 표시 시 -->
+        <div class="srch_rst">
+            <p>"검색결과" 검색 결과 총 30건</p>
+        </div>
+        <ul class="pax_srch_list">
+            <li>
+                <span class="seat_no">44c</span><span class="nation">KOR</span>|<span class="name">HONG GIL DONG</span> 
+                <ul class="pax_info_wrap">
+                    <li><span>Cabin</span><p>Y</p></li>
+                    <li><span>Class</span><p>C</p></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--// 승객 검색 팝업 -->
+
+    <!-- 승무원 검색 팝업(모든 승무원 리스트 표시) -->
+    <div class="crew_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">CREW SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="crew_srch_popup">
+        </div>
+        <!-- 전체 승무원 선택/해제 -->
+        <div class="chk_all_box">
+            <input type="checkbox" id="crew_all" ><label for="crew_all" class="crew_all_btn"><img src="../../images/icon/icon_sel.svg" alt=""> 전체 승무원</label>
+        </div>
+        <ul class="crew_srch_list">
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="crew_confirm_btn">CONFIRM</div>
+    </div>
+    <!--// 승무원 검색 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed"  ></div>
+    <!-- //dimmed -->
+
+  </body>
+</html>

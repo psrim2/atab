@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>FLT IRR 상황발생 결과 보고서</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/style_2.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <!-- //css load -->
+
+    <!-- js load -->
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <!-- <script src='../../js/jquery.simple-sidebar.min.js'></script> -->
+    <!--<script src='../../js/jquery-ui.min.js'></script>-->
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+    
+    <script>
+	
+	
+	 $(document).ready(function() {  
+		 //textarea 텍스트 입력 시 텍스트 길이에 맞게 자동 확장
+		 $("textarea").on('keydown keyup', function () {
+			  $(this).height(1).height( $(this).prop('scrollHeight')-8 );	
+			});
+		
+	 });
+	</script>
+   
+    <!--[if lt IE 9]>
+      <script src='../../js/html5shiv.min.js'></script>
+    <![endif]-->
+  </head>
+  <body>
+    <section class="container white_bg">
+		<!-- header-->
+		<header class="rpt_header">
+			<a class="back_btn"></a>
+			<h2>FLT IRR 상황발생 결과 보고서</h2>
+		</header>
+		<div class="sub_header rpt_flt_info" style="top: 49px;">
+			<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+			<span>OZ 202</span>
+			/
+			<span>HL7634</span>
+			/
+			<span>ICN - LAX</span>
+			<p>FC 0/0 BC 76/78 EY 362/417 TTL 438/495</p>
+		</div>
+		<script type="text/x-handlebars-template" id="irr-header-template">
+			<img src="../../images/icon/icon_fly_gray.svg" alt="icon_plane">FLT INFO
+			<span>{{carr_cd}} {{flt_nbr}}</span>
+			/
+			<span>{{airc_reg}}</span>
+			/
+			<span>{{from_airp_cd}} - {{to_airp_cd}}</span>
+			<p>FC {{frst_bkd_pax_boarded}}/{{frst_seats}} BC {{bus_bkd_pax_boarded}}/{{bus_seats}} EY {{econ_bkd_pax_boarded}}/{{econ_seats}} TTL {{tlt_bkd_pax_boarded}}/{{tlt_seats}}</p>
+		</script>
+		<!-- contents -->
+		<div class="contents" id="contents" style="padding-top: 131.045px;">
+			<!--  report -->
+			<div class="rpt_title">
+				<span>운항승무원</span>
+			</div>
+			<ul class="rpt_pax_list" id="fltCrewList">
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>한상완 / HAN SANG WAN / 707967</p>
+					</li>
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>장항일 / CHANG HANG ILL / 712925</p>
+					</li>
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>김경철 / KIM KYUNGCHEOL / 720076</p>
+					</li>
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>최창민 / CHOI CHANGMIN / 720940</p>
+					</li>
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>박준영 / PARK JUNYOUNG / 729188</p>
+					</li>
+			</ul>
+			<div class="rpt_title">
+				<span>캐빈매니저</span>
+			</div>
+			<ul class="rpt_pax_list">
+					<li>
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p class="cabinManager">조정인 / CHO JUNG IN / 150876 / 3201</p>
+					</li>
+			</ul>
+			<div class="rpt_title">
+				<span class="required"><font style="color: #D73554;">*</font>분류</span>
+			</div>
+			<div class="rpt_kind" style="grid-template-columns: auto;">
+				<select id="type" class="emptyChk">
+					<!-- <option value="">-- 선택 --</option> -->
+						<option value="IR01">FLT IRR</option>
+				</select>
+			</div>
+			<div class="rpt_title">
+				<span>담당승무원</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="crewList">
+						<!-- 리스트 없을 때 -->
+						<li class="default_crew">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p><input type="text" placeholder="담당승무원 이름 / 사번 / 소속그룹" readonly=""></p>
+						</li>
+				</ul>
+				<span class="add_btn popup_open" data-open="crew_srch_popup">
+					<img src="../../images/common/btn_report_mem_add.svg" alt="" class="crew_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span>내용입력</span>
+			</div>
+			<ul class="rpt_txt_list">
+					<li>
+						<span class="required"><font style="color: #D73554;">*</font>제목</span>
+						<input type="text" placeholder="제목을 입력해주세요" class="input_title emptyChk">
+					</li>
+					<li>
+						<span>개요</span>
+						<textarea placeholder="IRR 상황을 간단히 요약해 주세요." class="input_content"></textarea>
+					</li>
+					<li>
+						<span class="required"><font style="color: #D73554;">*</font>상세내용</span>
+						<textarea placeholder="IRR 상황을 구체적으로 입력해 주세요." class="input_action emptyChk"></textarea>
+					</li>
+					<li>
+						<span>기타</span>
+						<textarea placeholder="기타사항을 입력해주세요" class="input_etc"></textarea>
+					</li>
+			</ul>
+			<div class="rpt_title">
+				<span>기내 환자 발생의 경우 의료인 정보 입력</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="passengerList">
+						<!-- 리스트 없을 때 -->
+						<li class="default_passenger" style="display: none;">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<p><input type="text" placeholder="고객 이름 / 회원번호 / 좌석번호" readonly=""></p>
+						</li>
+			<li class="al_top list">
+				<img src="../../images/icon/icon_cumtomer.svg" alt="">
+				<ul class="irr_info" id="">
+					<li>
+						<p id="25874704">C** K***** / 798570764 / 061A</p>
+					</li>
+					<li>
+						<span class="email_title">E-mail</span>
+					</li>
+					<li>
+						<input type="text" name="email">
+					</li>
+					<li>
+						<span class="phone_title">전화번호</span>
+					</li>
+					<li>
+						<input type="text" name="phone">
+					</li>
+					<li>
+						<span class="addr_title">주소</span>
+					</li>
+					<li>
+						<input type="text" name="addr">
+					</li>
+					<li>
+						<span id="warning_personalInfo">개인정보 수집/이용 동의서 제출 여부(동의,비동의 여부 포함) <br>*미제출시 감사인시 실시 불가</span>
+					</li>
+					<li>
+						<div class="irr_rpt_class_tab_box">
+							<input type="radio" name="personal_info_agree" id="Y" value="Y"><label for="Y"><span>Y</span></label>
+							<input type="radio" name="personal_info_agree" id="N" value="N"><label for="N"><span>N</span></label>
+						</div>
+					</li>
+				</ul>
+				<img src="../../images/common/btn_list_del.svg" alt="" class="passengerDelete">
+			</li>
+		
+				</ul>
+				<span class="add_btn popup_open" data-open="pax_srch_popup" style="padding: 10px;">
+					<img src="../../images/icon/icon_search_thin.svg" alt="" class="pax_srch_open" style="display: none;">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span>사진첨부</span>
+			</div>
+			<div class="rpt_pic_wrap">
+				<!-- 사진은 최대 5개. li 는 그대로 유지. 사진 추가시 이미지와 del 버튼 추가.-->
+				<ul class="pic_list">
+					<li>
+						<img src="" alt="" id="pic0">
+						<span id="icon0"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic1">
+						<span id="icon1"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic2">
+						<span id="icon2"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic3">
+						<span id="icon3"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic4">
+						<span id="icon4"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic5">
+						<span id="icon5"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic6">
+						<span id="icon6"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic7">
+						<span id="icon7"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic8">
+						<span id="icon8"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic9">
+						<span id="icon9"></span>
+					</li>
+				</ul>
+				<div class="pic_btn_box">
+					<span class="camera popup_open" data-open="pic_popup"></span>
+					<br>
+					<span class="gallery popup_open" data-open="pic_popup"></span>
+				</div>
+			</div>
+			<!-- delete ,save button-->
+			<div class="report_btn_box rpt_form ">
+				<p id="deleteBtn">
+					<img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE
+				</p>
+				<p id="saveBtn">
+					<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+				</p>
+			</div>
+		</div>
+		<script type="text/x-handlebars-template" id="irr-report-template">
+			<!--  report -->
+			<div class="rpt_title">
+				<span>{{report_contents.t_fltCrewInfo}}</span>
+			</div>
+			<ul class="rpt_pax_list" id="fltCrewList">
+				{{#hbfn_isNotEmpty fltCrewList}}
+				{{#fltCrewList}}
+					<li class="list">
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p>{{name_korean}} / {{name_english}} / {{empl_nbr}}</p>
+					</li>
+				{{/fltCrewList}}
+				{{else}}
+					<li style="justify-content: center;">
+						{{@root.resource.msg_common_noDataResult}}
+					</li>
+				{{/hbfn_isNotEmpty}}
+			</ul>
+			<div class="rpt_title">
+				<span>{{report_contents.t_cabinManager}}</span>
+			</div>
+			<ul class="rpt_pax_list">
+				{{#hbfn_isNotEmpty cabinManager}}
+				{{#cabinManager}}
+					<li>
+						<img src="../../images/icon/icon_dot.svg" alt="">
+						<p class="cabinManager">{{name_korean}} / {{name_english}} / {{empl_nbr}} / {{group_code}}</p>
+					</li>
+				{{/cabinManager}}
+				{{else}}
+					<li style="justify-content: center;">
+						{{resource.msg_common_noDataResult}}
+					</li>
+				{{/hbfn_isNotEmpty}}
+			</ul>
+			<div class="rpt_title">
+				<span class="required">{{report_contents.t_category}}</span>
+			</div>
+			<div class="rpt_kind" style="grid-template-columns: auto;">
+				<select id="type" class="emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					<!-- <option value="">{{@root.report_contents.default_select}}</option> -->
+					{{#typeList}}
+						<option value="{{code}}">{{description}}</option>
+					{{/typeList}}
+				</select>
+			</div>
+			<div class="rpt_title">
+				<span>{{report_contents.t_crewInfo}}</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="crewList">
+					{{#hbfn_isNotEmpty crewList}}
+					<li class="default_crew" style="display: none;">
+						<img src="../../images/icon/icon_cabin.svg" alt="">
+						<p><input type="text" placeholder="{{report_contents.default_crew}}" readonly {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></p>
+					</li>
+					{{#crewList}}
+						<li class="list">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p id="{{empl_nbr}}" data-rank-name="{{rank_name}}">{{cabin_name}} / {{cabin_name_english}} / {{empl_nbr}} / {{group_code}}</p>
+							<img src="../../images/common/btn_list_del.svg" alt="" class="crewDel">
+						</li>
+					{{/crewList}}
+					{{else}}
+						<!-- 리스트 없을 때 -->
+						<li class="default_crew">
+							<img src="../../images/icon/icon_cabin.svg" alt="">
+							<p><input type="text" placeholder="{{report_contents.default_crew}}" readonly {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></p>
+						</li>
+					{{/hbfn_isNotEmpty}}
+				</ul>
+				<span class="add_btn popup_open" data-open="crew_srch_popup">
+					<img src="../../images/common/btn_report_mem_add.svg" alt="" class="crew_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span>{{@root.report_contents.t_content}}</span>
+			</div>
+			<ul class="rpt_txt_list">
+				{{#hbfn_isNotEmpty report_detail}}
+				{{#report_detail}}
+					<li>
+						<span class="required">{{@root.report_contents.rpt_title}}</span>
+						<input type="text" placeholder="{{@root.report_contents.title_placeholder}}" class="input_title emptyChk" value="{{title}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</li>
+					<li>
+						<span>{{@root.report_contents.rpt_summary}}</span>
+						<textarea placeholder="{{@root.report_contents.summary_irr_placeholder}}" class="input_content" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents1}}</textarea>
+					</li>
+					<li>
+						<span class="required">{{@root.report_contents.rpt_detail}}</span>
+						<textarea placeholder="{{@root.report_contents.detail_irr_placeholder}}" class="input_action emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents2}}</textarea>
+					</li>
+					<li>
+						<span>{{@root.report_contents.rpt_etc}}</span>
+						<textarea placeholder="{{@root.report_contents.etc_placeholder}}" class="input_etc" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>{{contents3}}</textarea>
+					</li>
+				{{/report_detail}}
+				{{else}}
+					<li>
+						<span class="required">{{@root.report_contents.rpt_title}}</span>
+						<input type="text" placeholder="{{@root.report_contents.title_placeholder}}" class="input_title emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+					</li>
+					<li>
+						<span>{{@root.report_contents.rpt_summary}}</span>
+						<textarea placeholder="{{@root.report_contents.summary_irr_placeholder}}" class="input_content" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+					<li>
+						<span class="required">{{@root.report_contents.rpt_detail}}</span>
+						<textarea placeholder="{{@root.report_contents.detail_irr_placeholder}}" class="input_action emptyChk" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+					<li>
+						<span>{{@root.report_contents.rpt_etc}}</span>
+						<textarea placeholder="{{@root.report_contents.etc_placeholder}}" class="input_etc" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></textarea>
+					</li>
+				{{/hbfn_isNotEmpty}}
+			</ul>
+			<div class="rpt_title">
+				<span>{{@root.report_contents.t_medical_info}}</span>
+			</div>
+			<div class="rpt_pax_list_wrap">
+				<ul class="rpt_pax_list" id="passengerList">
+					{{#hbfn_isNotEmpty medicalList}}
+					<li class="default_passenger" style="display: none;">
+						<img src="../../images/icon/icon_cumtomer.svg" alt="">
+						<p><input type="text" placeholder="{{report_contents.default_passenger}}" readonly {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></p>
+					</li>
+					{{#medicalList}}
+						<li class="al_top list">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<ul class="irr_info">
+								<li>
+									<p id="{{relation_id}}">{{name}} / {{acno}} / {{seat_no}}</p>
+								</li>
+								<li>
+									<span class="email_title">E-mail</span>
+								</li>
+								<li>
+									<input type="text" name="email" value="{{email}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+								</li>
+								<li>
+									<span class="phone_title">{{@root.report_contents.irr_phone}}</span>
+								</li>
+								<li>
+									<input type="text" name="phone" value="{{phone}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+								</li>
+								<li>
+									<span class="addr_title">{{@root.report_contents.irr_addr}}</span>
+								</li>
+								<li>
+									<input type="text" name="addr" value="{{addr}}" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}>
+								</li>
+								<li>
+									<span id="warning_personalInfo"></span>
+								</li>
+								<li>
+									<div class="irr_rpt_class_tab_box">
+										<input type="radio" name="personal_info_agree" id="Y" value="Y" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><label for="Y"><span>Y</span></label>
+										<input type="radio" name="personal_info_agree" id="N" value="N" {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}><label for="N"><span>N</span></label>
+									</div>
+								</li>
+							</ul>
+							<img src="../../images/common/btn_list_del.svg" alt="" class="paxDel">
+						</li>
+					{{/medicalList}}
+					{{else}}
+						<!-- 리스트 없을 때 -->
+						<li class="default_passenger">
+							<img src="../../images/icon/icon_cumtomer.svg" alt="">
+							<p><input type="text" placeholder="{{report_contents.default_passenger}}" readonly {{#hbfn_if @root.send_yn 'Y'}}disabled{{/hbfn_if}}></p>
+						</li>
+					{{/hbfn_isNotEmpty}}
+				</ul>
+				<span class="add_btn popup_open" data-open="pax_srch_popup" style="padding: 10px;">
+					<img src="../../images/icon/icon_search_thin.svg" alt="" class="pax_srch_open">
+				</span>
+			</div>
+			<div class="rpt_title">
+				<span>{{@root.report_contents.t_addPhoto}}</span>
+			</div>
+			<div class="rpt_pic_wrap">
+				<!-- 사진은 최대 5개. li 는 그대로 유지. 사진 추가시 이미지와 del 버튼 추가.-->
+				<ul class="pic_list">
+					<li>
+						<img src="" alt="" id="pic0">
+						<span id="icon0"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic1">
+						<span id="icon1"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic2">
+						<span id="icon2"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic3">
+						<span id="icon3"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic4">
+						<span id="icon4"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic5">
+						<span id="icon5"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic6">
+						<span id="icon6"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic7">
+						<span id="icon7"></span>
+					</li>
+					<li>
+						<img src="" alt="" id="pic8">
+						<span id="icon8"></span>
+					</li>	
+					<li>
+						<img src="" alt="" id="pic9">
+						<span id="icon9"></span>
+					</li>
+				</ul>
+				<div class="pic_btn_box">
+					<span class="camera popup_open" data-open="pic_popup"></span>
+					<br>
+					<span class="gallery popup_open" data-open="pic_popup"></span>
+				</div>
+			</div>
+			<!-- delete ,save button-->
+			<div class="report_btn_box rpt_form {{#hbfn_if send_yn 'Y'}}disable{{/hbfn_if}}">
+				<p id="deleteBtn">
+					<img src="../../images/icon/icon_delete_b_w.svg" alt="icon_delete"> DELETE
+				</p>
+				<p id="saveBtn">
+					<img src="../../images/icon/icon_save_noborder.svg" alt="icon_save"> SAVE
+				</p>
+			</div>
+		</script>
+		<!-- //contents -->
+	<div class="pinConfirmPop"></div><div id="commonPop"></div></section>
+
+    <!-- 승객 검색 팝업 -->
+    <div class="pax_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">PASSENGER SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="pax_srch_popup">
+        </div>
+        <!--기본-->
+        <div class="srch_box">
+            <input type="text" placeholder="SEARCH"><img src="../../images/icon/icon_search_thin.svg" alt="">
+        </div>
+        <!--검색결과 -->
+        <div class="srch_rst">
+            <p>"검색결과" 검색 결과 총 30건</p>
+        </div>
+        <ul class="pax_srch_list">
+            <li>
+                <span class="seat_no">44c</span><span class="nation">KOR</span>|<span class="name">HONG GIL DONG</span> 
+                <ul class="pax_info_wrap">
+                    <li><span>Cabin</span><p>Y</p></li>
+                    <li><span>Class</span><p>C</p></li>
+                </ul>
+            </li>
+           
+        </ul>
+    </div>
+    <!--// 승객 검색 팝업 -->
+
+    <!-- 승무원 검색 팝업(모든 승무원 리스트 표시) -->
+    <div class="crew_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">CREW SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="crew_srch_popup">
+        </div>
+        <!-- 전체 승무원 선택/해제 -->
+        <div class="chk_all_box">
+            <input type="checkbox" id="crew_all" ><label for="crew_all" class="crew_all_btn"><img src="../../images/icon/icon_sel.svg" alt=""> 전체 승무원</label>
+        </div>
+        <ul class="crew_srch_list">
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+            <li>
+                <div>
+                    <span class="name">HONG GIL DONG</span> 
+                    <p class="crew_detail">369155736/ PUR/ F/ Class: 37/ 1216/ PS 00-04/ 대형기 /A350,A380</p>  
+                </div>
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="crew_confirm_btn">CONFIRM</div>
+    </div>
+    <!--// 승무원 검색 팝업 -->
+
+    <!-- 승무원 검색 팝업 -->
+    <!-- <div class="crew_srch_popup rpt_srch_popup" style="display: none;">
+        <div class="head">
+            <span class="title">CREW SEARCH</span>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="crew_srch_popup">
+        </div>
+      
+        <div class="srch_box">
+            <input type="text" placeholder="SEARCH"><img src="../../images/icon/icon_search_thin.svg" alt="">
+        </div>
+       
+        <div class="srch_rst">
+            <p>"검색결과" 검색 결과 총 30건</p>
+        </div>
+        <ul class="crew_srch_list">
+            <li>
+                <span class="name">HONG GIL DONG</span> 
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+            <li>
+                <span class="name">HONG GIL DONG</span> 
+                <ul class="crew_info_wrap">
+                    <li><span>ANN</span><p>4</p></li>
+                    <li><span>DUTY</span><p>AL</p></li>
+                    <li><span>ETC</span><p>ANN</p></li>
+                    <li><span>ADD</span><p></p></li>
+                </ul>
+            </li>
+        </ul>
+    </div> -->
+    <!--// 승무원 검색 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed" ></div>
+    <!-- //dimmed -->
+
+  </body>
+</html>
