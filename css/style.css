@@ -1721,7 +1721,7 @@ ul:has(.stationFile){margin: 0 -5px 0 -10px;display: flex;flex-direction: column
 .pageWrap a.next:before, .pageWrap a.next.all:after{transform: rotate(-225deg);}
 
 
-.ctcWrap{padding: 0 0 25px; display: flex; flex-direction: column; margin-top: -10px;}
+.ctcWrap{padding: 0 10px 25px 15px; display: flex; flex-direction: column; margin-top: -10px;}
 .ctcWrap li{padding: 15px 0; border-bottom: 1px solid var(--gray01);display: flex; flex-direction: column; gap: 2px; position: relative;}
 .ctcWrap h4{font-size: 20px; margin-bottom: 10px; min-height: 40px; display: flex; align-items: center; padding-right: 110px;}
 .ctcWrap p.info{font-size: 14px; color: var(--gray06); margin-top: 5px; word-break: keep-all;}
@@ -2973,6 +2973,9 @@ div:has(#reDownloadManual) {
 
     .qna_add_popup li{padding: 15px 15px 13px;}
     .qna_add_popup li .title{font-size: 1.05em;}
+
+    .qna_content:not(:has(.third_tab)){padding: 5px 15px;}
+    .ctcWrap{padding: 0;}
 
     .pageWrap{padding: 0 15px;}
     .pageWrap a{width: 35px;}
