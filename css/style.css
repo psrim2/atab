@@ -1729,6 +1729,7 @@ ul:has(.stationFile){margin: 0 -5px 0 -10px;display: flex;flex-direction: column
 .ctcWrap div span.tel{padding-left: 0;}
 .ctcWrap div span.email{background: url("../images/icon/icon_mail.svg") no-repeat left top 2px;}
 .ctcWrap div span.email:empty{display: none;}
+.ctcWrap div span *{text-decoration: none !important; color: inherit !important;}
 .ctcWrap div{display: flex; gap: 2px 15px; flex-wrap: wrap; }
 .ctcWrap .btnWrap{position: absolute; display: flex; gap: 10px; top: 14px; right: 0; padding-right: 0;}
 .ctcWrap .btnWrap a{display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; background-color: var(--gray01); border-radius: 50%; border: 1px solid var(--gray02)}
