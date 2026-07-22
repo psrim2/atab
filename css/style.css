@@ -2974,7 +2974,6 @@ div:has(#reDownloadManual) {
     .qna_add_popup li{padding: 15px 15px 13px;}
     .qna_add_popup li .title{font-size: 1.05em;}
 
-    .qna_content:not(:has(.third_tab)){padding: 5px 15px;}
     .ctcWrap{padding: 0;}
 
     .pageWrap{padding: 0 15px;}
@@ -2982,9 +2981,11 @@ div:has(#reDownloadManual) {
     
     textarea, input, .selectPop{font-size: 1.1em;}
 
-    .ctcWrap h4{font-size: 17px;}
+    .qna_content:not(:has(.third_tab)){padding: 5px 15px;}
+    .ctcWrap p.info{font-size: 0.93em;}
+    .ctcWrap h4{font-size: 1.2em;}
     .ctcWrap div{flex-direction: column; gap: 2px;}
-    .ctcWrap div span{font-size: 14px; background: none !important; padding: 0;}
+    .ctcWrap div span{font-size: 1em; background: none !important; padding: 0;}
 
     .ctcWrap .btnWrap{flex-direction: row; gap: 5px;}
 
