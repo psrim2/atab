@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />    
+    <title>Q&A</title>
+
+    <!-- css load -->
+    <link href="../../css/common.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/atab.css" rel="stylesheet" />
+    <link href="../../css/add_2024.css" rel="stylesheet" />
+    <!-- //css load -->
+
+
+   <!-- js load -->
+ 
+    <script src='../../js/jquery-3.3.1.min.js'></script>
+    <script src='../../js/common.js'></script> 
+    <!--// js load -->
+  </head>
+  <body>
+    <section class="container white_bg" >
+
+      <!-- side menu -->
+      <div class='main_menu' id='main_menu'></div>
+      <!-- //side menu -->
+
+      <!-- header-->
+      <header class="bg_white main_header underline">
+        <a class="main_menu_btn" id="menu_open"></a>
+        <h2 class="">Q&A</h2>
+      </header>
+
+       <!-- sub header -->
+      <div class="sub_header shadow">
+        <!-- tab -->
+        <div class="sub_tab tab_box">
+            <a class="tab on" data-open="tab01" data-close="tabCon">Q&A</a>
+            <a class="tab" data-open="tab02" data-close="tabCon">공지</a>
+            <a class="tab" data-open="tab03" data-close="tabCon">FAQ</a>
+            <a class="tab" data-open="tab04" data-close="tabCon">연락처</a>
+            <a class="tab" data-open="tab05" data-close="tabCon">신청경로</a>
+        </div>
+      </div>
+
+      <!-- contents -->
+      <div class="contents qna" id="contents">
+        <div class="tabCon tab01 qnaTabCon">
+          <div class="third_tab tab_box">
+            <a class="tab on">전체</a>
+            <a class="tab">My Q&A</a>
+            <a class="tab">승무원 지원</a>
+            <a class="tab">승무 기획</a>
+            <a class="tab">시스템</a>
+            <a class="tab">서비스</a>
+            <a class="tab">안전</a>
+            <a class="tab">스케줄</a>
+            <a class="tab">Multinational Crews</a>
+            <a class="tab">서비스</a>
+          </div>
+          <div class="searchBox">
+            <input type="text" class="searchInput">
+            <button class="searchBtn">SEARCH</button>
+          </div>
+          <!-- 검색시에만 표출 -->
+          <div class="searchResult">
+            <p>0 results for 홍콩</p>
+            <span class="closeBtn"><img src="../../images/common/btn_g_menu_close.svg" alt="icon_x"></span>
+          </div>
+           <!-- qna추가버튼   -->
+            <span class="qna_add_btn popup_open" data-open="qna_add_popup">
+              <img src="../../images/common/btn_report_add.svg" alt="add_button">
+            </span>
+         <!-- qna추가버튼   -->
+           <!-- 검색시에만 표출 -->
+          <ul class="qnaListWrap">
+            <li>
+              <div class="subjectWrap">
+                <h4>기체흔들림으로 인한 고객 불만사항</h4>
+                <p class="infoWrap"><span>홍길동</span><span>456789</span><span>2025.06.12</span><span>16:24</span><span>조회 5</span></p>
+              </div>
+              <div class="answer">답변대기</div>
+            </li>
+             <li>
+              <div class="subjectWrap">
+                <h4>고객불만 접수 시 대응은 어떻게 해야할까요?</h4>
+                <p class="infoWrap"><span>홍길동</span><span>456789</span><span>2025.06.12</span><span>16:24</span><span>조회 5</span></p>
+              </div>
+              <div class="answer done">답변완료</div>
+            </li>
+            
+          </ul>
+          <div class="pageWrap">
+            <a href="" class="pre all dim"></a>
+            <a href="" class="pre"></a>
+            <!--모바일은 page 5개씩-->
+            <div class="noWrap">
+              <a href="" class="no sel" >1</a>
+              <a href="" class="no" >2</a>
+              <a href="" class="no" >3</a>
+              <a href="" class="no" >4</a>
+              <a href="" class="no" >5</a>
+              <a href="" class="no" >6</a>
+              <a href="" class="no" >7</a>
+              <a href="" class="no" >8</a>
+              <a href="" class="no" >9</a>
+              <a href="" class="no" >10</a>
+            </div>
+            <a href="" class="next"></a>
+            <a href="" class="next all"></a>
+          </div>
+        </div>
+        <div class="tabCon tab02" style="display:none;">탭 2의 내용</div>
+        <div class="tabCon tab03" style="display:none;">탭 3의 내용</div>
+        <div class="tabCon tab04" style="display:none;">
+          <!-- <ul class="ctcWrap">
+            <li>
+              <h4>여권/ 비자</h4>
+              <div><span class="tel">TEL 02-2669-0000</span><span class="email">brshin@flyasiana.com</span></div>
+              <p class="info">근무시간: 평일 8am ~ 5pm / 여권 재갱신 후 근</p>
+              <div class="btnWrap">
+                <a href="" class="btnMail"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                <a href="" class="btnTel"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              </div>
+            </li>
+            <li>
+              <h4>캐빈스케줄</h4>
+              <div><span class="tel">TEL 02-2669-0000</span><span class="email">brshin@flyasiana.com</span></div>
+              <p class="info"></p>
+               <div class="btnWrap">
+                <a href="" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                <a href="" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              </div>
+            </li>
+            <li>
+              <h4>임신휴직/ 경조사</h4>
+              <div><span class="tel">TEL 02-2669-0000</span><span class="email">brshin@flyasiana.com</span></div>
+              <p class="info">근무시간: 평일 8am ~ 5pm / 여권 재갱신 후 근</p>
+              <div class="btnWrap">
+                <a href="" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                <a href="" class="btnTel"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              </div>
+            </li>
+            <li>
+              <h4>임신휴직/ 경조사</h4>
+              <div><span class="tel">TEL 02-2669-0000</span><span class="email">brshin@flyasiana.com</span></div>
+              <p class="info">근무시간: 평일 8am ~ 5pm / 여권 재갱신 후 근</p>
+              <div class="btnWrap">
+                <a href="" class="btnMail"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                <a href="" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              </div>
+            </li>
+          </ul> -->
+          <div class="contact_wrap qna_content" style="" id="contactDiv">
+              <ul class="ctcWrap">
+										<li data-type="Trouble" shooter="" data-tel="032-744-2003" data-email="juyun03j@flyasiana.com" data-contents="◈근무시간:" 평일="" 6am~10pm="" (주말="" 공휴일="" 미운영),="" irre="" 대응,="" t2="" 브리핑실="" a-tab="" 임시기기="" 대여="" 반납="">
+											<h4>Trouble Shooter</h4>
+              								<div><span class="tel">TEL 032-744-2003</span><span class="email">juyun03j@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일 6am~10pm (주말/공휴일 미운영), IRRE 대응, T2 브리핑실 A-TAB 임시기기 대여/반납</p>
+              								<div class="btnWrap">
+                								<a href="mailto:juyun03j@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:032-744-2003" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="임신휴직" data-tel="02-2669-3639" data-email="hyeryun1018@flyasiana.com" data-contents="◈근무시간:" 평일8am-5pm="" (주말="" 공휴일:="" 객실편조팀="" 연락)="">
+											<h4>임신휴직</h4>
+              								<div><span class="tel">TEL 02-2669-3639</span><span class="email">hyeryun1018@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일8am-5pm (주말/공휴일: 객실편조팀 연락) </p>
+              								<div class="btnWrap">
+                								<a href="mailto:hyeryun1018@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3639" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="인하대병원의료센터" data-tel="032-743-3119" data-email="data-contents=">
+											<h4>인하대병원의료센터</h4>
+              								<div><span class="tel">TEL 032-743-3119</span><span class="email"></span></div>
+              								<p class="info"></p>
+              								<div class="btnWrap">
+                								<a href="mailto:" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:032-743-3119" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="인천공항유실물관리소" data-tel="032-741-3110" data-email="data-contents=032-741-3110~4" 보세구역(면세점,="" 탑승gate,="" 입국장)="" 분실물="" :="" 032-722-4426(인천공항세관)="">
+											<h4>인천공항유실물관리소</h4>
+              								<div><span class="tel">TEL 032-741-3110</span><span class="email"></span></div>
+              								<p class="info">032-741-3110~4 /보세구역(면세점, 탑승GATE, 입국장) / 분실물 : 032-722-4426(인천공항세관)</p>
+              								<div class="btnWrap">
+                								<a href="mailto:" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:032-741-3110" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="아시아나분실물관리" data-tel="032-744-2205" data-email="data-contents=032-744-2205~6">
+											<h4>아시아나분실물관리</h4>
+              								<div><span class="tel">TEL 032-744-2205</span><span class="email"></span></div>
+              								<p class="info">032-744-2205~6</p>
+              								<div class="btnWrap">
+                								<a href="mailto:" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:032-744-2205" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="발권DESK" data-tel="02-2669-4270" data-email="data-contents=13:00" 이후="" open="">
+											<h4>발권DESK</h4>
+              								<div><span class="tel">TEL 02-2669-4270</span><span class="email"></span></div>
+              								<p class="info">13:00 이후 OPEN</p>
+              								<div class="btnWrap">
+                								<a href="mailto:" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-4270" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="로고샵" data-tel="02-2669-3699" data-email="data-contents=">
+											<h4>로고샵</h4>
+              								<div><span class="tel">TEL 02-2669-3699</span><span class="email"></span></div>
+              								<p class="info"></p>
+              								<div class="btnWrap">
+                								<a href="mailto:" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3699" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="의료서비스팀" data-tel="02-2669-3817" data-email="selnz1@flyasiana.com" data-contents="◈근무시간:" 평일="" 8am-5pm="">
+											<h4>의료서비스팀</h4>
+              								<div><span class="tel">TEL 02-2669-3817</span><span class="email">selnz1@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일 8am-5pm</p>
+              								<div class="btnWrap">
+                								<a href="mailto:selnz1@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3817" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="기판카운터" data-tel="02-2669-3666" data-email="dutyfree@flyasiana.com" data-contents="◈기판카운터(07:00~18:00):" 02)2669-3434="" ◈cs고객센터(08:00~17:00):="" 02)26669-3434="">
+											<h4>기판카운터</h4>
+              								<div><span class="tel">TEL 02-2669-3666</span><span class="email">dutyfree@flyasiana.com</span></div>
+              								<p class="info">◈기판카운터(07:00~18:00): 02)2669-3434 ◈CS고객센터(08:00~17:00): 02)26669-3434</p>
+              								<div class="btnWrap">
+                								<a href="mailto:dutyfree@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3666" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="병가" data-tel="02-2669-3631" data-email="mjjo@flyasiana.com" data-contents="◈근무시간:" 평일8am-5pm(주말="" 공휴일="" 이메일="" 문의="" 요망)="">
+											<h4>병가</h4>
+              								<div><span class="tel">TEL 02-2669-3631</span><span class="email">mjjo@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일8am-5pm(주말/공휴일 이메일 문의 요망)</p>
+              								<div class="btnWrap">
+                								<a href="mailto:mjjo@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3631" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="승무원등록증" data-tel="02-2669-3634" data-email="parkjihoon@flyasiana.com" data-contents="◈신청경로" :="" 크루월드-crew="" room-각종신청-여권번호변경="">
+											<h4>승무원등록증</h4>
+              								<div><span class="tel">TEL 02-2669-3634</span><span class="email">parkjihoon@flyasiana.com</span></div>
+              								<p class="info">◈신청경로 : 크루월드-CREW ROOM-각종신청-여권번호변경</p>
+              								<div class="btnWrap">
+                								<a href="mailto:parkjihoon@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3634" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="모성보호제도/경조사" data-tel="02-2669-5445" data-email="mjjo@flyasiana.com" data-contents="◈근무시간:" 평일8am-5pm(주말="" 공휴일:="" 스케줄팀="" 연락)="" ◈조사="" 발생="" 시:="" 소속="" 파트장님="" 연락="" 요망="" ◈주말="" 및="" 당직파트장="" 또는="" 경영지원팀="" 이은주="" 과장="" (3166)="" 연락요망="" ◈이외="" 경조사:="" 발생일="" 전="" 전월="" 15일까지creworld="" 신청서="" 작성(신청경로:crewroom→각종신청)="">
+											<h4>모성보호제도/경조사</h4>
+              								<div><span class="tel">TEL 02-2669-5445</span><span class="email">mjjo@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일8am-5pm(주말/공휴일: 스케줄팀 연락) ◈조사 발생 시: 소속 파트장님 연락 요망 ◈주말 및 공휴일: 당직파트장 또는 경영지원팀 이은주 과장 (3166) 연락요망 ◈이외 경조사: 발생일 전 전월 15일까지CREWORLD 신청서 작성(신청경로:CREWROOM→각종신청)</p>
+              								<div class="btnWrap">
+                								<a href="mailto:mjjo@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-5445" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="지급품센터" data-tel="02-2669-3110" data-email="crewsupplies@asianapartner.com" data-contents="◈지급품센터" 운영="" 안내="" ◈코트="" 춘추자켓바지="" 명찰="" :="" (온라인신청)="" 상시접수가능,="" (수령)="" mail="" 및="" sms="" 입고안내="" ◈그외="" 모든="" 지급품="" :(온라인신청)="" 00:00~17:00="" 09:00~17:00="">
+											<h4>지급품센터</h4>
+              								<div><span class="tel">TEL 02-2669-3110</span><span class="email">crewsupplies@asianapartner.com</span></div>
+              								<p class="info">◈지급품센터 운영 안내 ◈코트/춘추자켓바지/명찰 : (온라인신청) 상시접수가능, (수령) mail 및 SMS 입고안내 ◈그외 모든 지급품 :(온라인신청) 00:00~17:00 (수령) 09:00~17:00</p>
+              								<div class="btnWrap">
+                								<a href="mailto:crewsupplies@asianapartner.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3110" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="여권/비자" data-tel="02-2669-3478" data-email="brshin@flyasiana.com" data-contents="◈근무시간:" 평일8am-5pm="" 여권="" 재갱신="" 후="" 근무시간="" 내="" 담당자에게="" 연락="" 요망(주말="" 및="" 공휴일="" 제외)="" ◈신청경로="" :="" 크루월드-crew="" room-각종신청-여권번호변경="">
+											<h4>여권/비자</h4>
+              								<div><span class="tel">TEL 02-2669-3478</span><span class="email">brshin@flyasiana.com</span></div>
+              								<p class="info">◈근무시간: 평일8am-5pm /여권 재갱신 후 근무시간 내 담당자에게 연락 요망(주말 및 공휴일 제외) ◈신청경로 : 크루월드-CREW ROOM-각종신청-여권번호변경</p>
+              								<div class="btnWrap">
+                								<a href="mailto:brshin@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3478" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="스케줄" data-tel="02-2669-3800" data-email="aaskd@flyasiana.com" data-contents="">
+											<h4>스케줄</h4>
+              								<div><span class="tel">TEL 02-2669-3800</span><span class="email">aaskd@flyasiana.com</span></div>
+              								<p class="info"></p>
+              								<div class="btnWrap">
+                								<a href="mailto:aaskd@flyasiana.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3800" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+										<li data-type="Atabhelp" data-tel="02-2669-3272" data-email="atabhelp@asianapartner.com" data-contents="◈" 운영="" 시간="" :="" 06:00="" ~="" 18:00="" (주말="" 및="" 공휴일="" 포함,="" 점심시간="" 제외)="" ◈="" 위치="" it동="" 2층="" stm="" 사무실="" 지원="" 업무="" -="" 평일="" 태블릿="" 기기="" 관리,="" 오류="" 신고접수="" 1차="" 해결,="" 고장="" 수리="" 접수,="" 배상="" 방법="" 안내,="" 분실신고="" 접수(기기초기화),="" 임시="" 대여="" 반납,="" 신규="" 배포,="" 반납="" 수령="" 주말="" 대여,="" 접수(기기초기화)="">
+											<h4>Atabhelp</h4>
+              								<div><span class="tel">TEL 02-2669-3272</span><span class="email">atabhelp@asianapartner.com</span></div>
+              								<p class="info">◈ 운영 시간 : 06:00 ~ 18:00 (주말 및 공휴일 포함, 점심시간 제외) ◈ 위치 : IT동 2층 STM 사무실 ◈ 지원 업무 - 평일 : 태블릿 기기 관리, 오류 신고접수 및 1차 해결, 고장/수리 접수, 배상 방법 안내, 분실신고 접수(기기초기화), 임시 태블릿 대여/반납, 신규 기기 배포, 반납 기기 수령 - 주말 및 공휴일 : 임시 태블릿 대여, 분실신고 접수(기기초기화)</p>
+              								<div class="btnWrap">
+                								<a href="mailto:atabhelp@asianapartner.com" class="btnMail action"><img src="../../images/icon/btn_mail.svg" alt="mail icon"></a>
+                								<a href="tel:02-2669-3272" class="btnTel action"><img src="../../images/icon/btn_tel.svg" alt="tel icon"></a>
+              								</div>
+										</li>
+				    </ul>
+          </div>
+        </div>
+        <div class="tabCon tab05" style="display:none;">탭 5의 내용</div>
+
+      </div>
+       <!-- //contents -->
+
+    </section>
+
+     <!-- 상세 팝업 -->
+    <div class="qna_add_popup c_pop_box">
+        <div class="header">
+            <h2 class="title">업무선택</h2>
+            <img src="../../images/common/btn_g_menu_close.svg" alt="close_btn" class="popup_cls" data-close="qna_add_popup">
+        </div>
+       <ul class="qna_add_list">
+          <li class="cate">승무원 지원</li>
+          <li><div class="title">PREDIEM/ 비행수당/ 택시비/ 비자</div> </li>
+          <li><div class="title">시설/ 셔틀버스/ Layover Hotel/ 승무원 등록증/ 식권(식수)/ ID Card</div> </li>
+          <li><div class="title">시설/ 셔틀버스/ Layover Hotel/ 승무원 등록증/ 식권(식수)/ ID Card</div> </li>
+          <li class="cate">승무원 기획</li>
+          <li><div class="title">PREDIEM/ 비행수당/ 택시비/ 비자</div> </li>
+          <li><div class="title">시설/ 셔틀버스/ Layover Hotel/ 승무원 등록증/ 식권(식수)/ ID Card</div> </li>
+          <li><div class="title">시설/ 셔틀버스/ Layover Hotel/ 승무원 등록증/ 식권(식수)/ ID Card</div> </li>
+      </ul>
+    </div>
+    <!--// 상세 팝업 -->
+    
+    <!-- dimmed -->
+    <div class="dimmed" ></div>
+    <!-- //dimmed -->
+
+  </body>
+</html>
