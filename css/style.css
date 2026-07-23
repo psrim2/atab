@@ -332,7 +332,7 @@
 .failLine{background-color: #F2E6EB;}
 
 .crew_info_wrapper{margin-left:auto;}
-.crew_info_wrap {display: grid;grid-template-columns: 25px 30px 36px 36px 27px;grid-gap: 1px;}
+.crew_info_wrap {display: grid;grid-template-columns: 30px 26px 50px 27px 27px; grid-gap: 1px;}
 .crew_info_wrap > li{text-align: center;border-radius: 5px;height:45px;position: relative; background-color: var(--gray01);}
 
 .crew_info_wrap > li:before, .f_crew_info_wrap > li:before {
@@ -1735,7 +1735,7 @@ ul:has(.stationFile){margin: 0 -5px 0 -10px;display: flex;flex-direction: column
 .ctcWrap .btnWrap a{display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; background-color: var(--gray01); border-radius: 50%; border: 1px solid var(--gray02)}
 .ctcWrap .btnWrap a img{transform: scale(.9); }
 
-.ctcWrap .btnWrap a.action{border-color: rgba(28,37,121,.25);}
+.ctcWrap .btnWrap a.action{border-color: rgba(28,37,121,.05);}
 .ctcWrap .btnWrap a.action img{display: none;}
 .ctcWrap .btnWrap a.action.btnTel:before{content: ""; background: url("../images/icon/btn_tel_action.svg") no-repeat center center; width: 40px; height: 40px; }
 .ctcWrap .btnWrap a.action.btnMail:before{content: ""; background: url("../images/icon/btn_mail_action.svg") no-repeat center center; width: 40px; height: 40px; }
